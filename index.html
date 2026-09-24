@@ -364,8 +364,8 @@ a.btn{text-decoration:none;}
 .modal-ft{position:sticky;bottom:0;z-index:3;padding:10px 18px 12px;display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap;background:#e9eef6;border-top:1px solid #c3cde0;}
 
 /* ============ TOAST（系統訊息） ============ */
-.notif{position:fixed;top:14px;left:50%;transform:translateX(-50%) translateY(-80px);background:rgba(22,30,62,.94);color:#fff;padding:10px 18px;border-radius:4px;border:1px solid #8da3c9;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 6px 16px rgba(10,16,40,.35);font-size:14px;font-weight:700;z-index:10100;transition:transform .3s;pointer-events:none;max-width:calc(100vw - 24px);white-space:normal;text-align:center;}
-.notif.show{transform:translateX(-50%) translateY(0);}
+.notif{position:fixed;top:14px;left:12px;right:12px;margin:0 auto;width:max-content;max-width:min(560px,calc(100vw - 24px));transform:translateY(calc(-100% - 24px));visibility:hidden;transition:transform .3s,visibility 0s .3s;background:rgba(22,30,62,.95);color:#fff;padding:10px 18px;border-radius:4px;border:1px solid #8da3c9;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12),0 6px 16px rgba(10,16,40,.35);font-size:14px;font-weight:700;z-index:10100;pointer-events:none;white-space:normal;text-align:center;}
+.notif.show{transform:translateY(0);visibility:visible;transition:transform .3s;}
 
 /* ============ TABS（裝備欄分頁） ============ */
 .page-tabs{display:flex;gap:3px;border-bottom:1px solid var(--ro-frame);margin-bottom:14px;padding:0 4px;overflow-x:auto;scrollbar-width:none;}
@@ -429,6 +429,49 @@ a.btn{text-decoration:none;}
 .login-hint{font-size:13px;color:var(--ro-ink3);text-align:center;margin-top:12px;line-height:1.7;}
 .login-hint code{background:#fff3c9;border:1px solid #e0c46a;padding:0 6px;border-radius:3px;color:#5c3a00;font-weight:800;}
 
+
+/* ============ QA 修正 ============ */
+.clinic-label,.user-name{white-space:nowrap;}
+.clinic-label{align-self:flex-end;padding-bottom:9px;}
+#userDropdown{width:260px;}
+.notif-item.read{background:#eef1f6;}
+.notif-item.read .ni-title,.notif-item.read .ni-sub{color:var(--ro-ink3);}
+.notif-item.read .ni-icon{filter:grayscale(1);opacity:.6;}
+.ni-icon{background:var(--ro-iconbox)!important;border:2px solid #8da3c9;box-shadow:inset 0 0 0 1px #16204a;}
+.stat-trend{font-size:13px;}
+.stat-trend.up{color:#1a6d3e;}
+.stat-trend.down{color:#b02727;}
+.notif-badge{background:linear-gradient(180deg,#d33a30,#a51d17);}
+.user-avatar{background:linear-gradient(180deg,#d9468f,#9c355c);}
+.modal-close{background:radial-gradient(circle at 35% 30%,#b9ccf2 0,#4f6fb8 50%,#2c4687 100%);}
+.modal.modal-sm{max-width:440px;}
+.sidebar-close{display:none;position:absolute;right:10px;top:50%;margin-top:-16px;}
+.login-pin::placeholder{letter-spacing:1px;font-size:16px;font-weight:700;}
+.login-err:empty{min-height:0;margin-top:0;}
+/* 每日收支表 */
+.cb-band{background:var(--ro-title)!important;border:1px solid #6d7ea6!important;color:var(--ro-ink)!important;text-shadow:0 1px 0 rgba(255,255,255,.75);box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
+.cb-band-warm{background:linear-gradient(180deg,#fffaf0,#f6e6b8)!important;border-color:#c9a64a!important;color:var(--ro-brown)!important;}
+.cb-swipe{display:none;font-size:13px;font-weight:700;color:var(--ro-ink3);text-align:right;padding:4px 2px;}
+#page-cashbook .cb-tbl thead th{text-align:center;min-width:76px;}
+#page-cashbook .cb-tbl thead th:first-child{min-width:96px;}
+#page-cashbook input::placeholder,#page-cashbook textarea::placeholder{color:#646e8c;}
+#page-cashbook .cb-totals div,#page-cashbook .cb-counter div{font-style:normal!important;}
+#cb_doctor_rows input,#cb_doctor_rows select,#cb_doctor_rows td>button{background:transparent!important;}
+#cb_doctor_rows td:first-child{background:#EBF2FD;}
+#cb_shift_grid>div:first-child{display:flex;flex-direction:column;}
+#cb_shift_grid>div:first-child>input{flex:1;}
+#cb_expense_rows .cb-x{min-width:30px;min-height:30px;font-size:15px;padding:0 6px;}
+.os-chip{padding:3px 10px;min-height:28px;margin:2px;font-size:13px;font-weight:700;font-family:inherit;color:var(--ro-ink);background:var(--ro-btn);border:1px solid #5f6878;border-radius:3px;box-shadow:inset 0 1px 0 #fff;cursor:pointer;}
+.os-chip:hover{background:var(--ro-btn-hover);}
+.os-row>.btn{align-self:end;margin:0 0 12px!important;}
+@media(max-width:1180px){.clinic-label{display:none;}}
+@media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;}}
+@media(max-width:1024px){
+  .header{flex-wrap:wrap;padding:8px 12px 0;min-height:0;}
+  .user-name,.user-info>svg{display:none;}
+  .clinic-tabs{order:10;width:100%;}
+}
+
 /* 鍵盤操作時的焦點框 */
 .btn:focus-visible,.ctab:focus-visible,.chart-tab:focus-visible,.page-tab:focus-visible,.notif-btn:focus-visible,.mobile-menu-btn:focus-visible,.section-hd-link:focus-visible,.modal-close:focus-visible{outline:2px solid #ffb400;outline-offset:1px;}
 
@@ -476,6 +519,31 @@ a.btn{text-decoration:none;}
   .form-row:has(>.btn),.form-row-3:has(>.btn){grid-template-columns:1fr;}
   .form-row>.btn,.form-row-3>.btn{grid-column:1/-1;justify-self:end;}
   .tab-panel>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  /* QA：手機觸控尺寸與收支表 */
+  .chart-tab{min-height:34px;padding:5px 14px;}
+  .chart-period select{min-height:34px;}
+  .section-hd-link,.notif-dd-clear{min-height:32px;display:inline-flex;align-items:center;padding:4px 12px;}
+  .modal-close{width:32px;height:32px;font-size:18px;}
+  .sidebar-close{display:flex;}
+  #userDropdown{left:auto;right:8px;width:min(300px,calc(100vw - 16px));}
+  .cb-swipe{display:block;}
+  #page-cashbook .cb-doc-name{min-width:92px;}
+  #page-cashbook [data-field=receiver],#page-cashbook .cb-exp-receiver{min-width:76px;}
+  #page-cashbook .cb-tbl [data-field=cash],#page-cashbook .cb-tbl [data-field=card]{min-width:84px;}
+  #page-cashbook .cb-tbl tr>*:first-child{position:sticky;left:0;z-index:2;box-shadow:2px 0 0 var(--gray-border);}
+  #page-cashbook .cb-tbl tfoot td:first-child{background:#E0F2F5;}
+  #page-cashbook .cb-tbl tfoot tr:nth-child(2) td:first-child{background:#FDF9EB;}
+  #cb_expense_rows td:first-child{background:#FAFBFC;}
+  .cb-datenav{display:grid!important;grid-template-columns:auto minmax(0,1fr) auto;gap:8px;}
+  .cb-datenav #cb_date{width:100%!important;min-width:0;}
+  .cb-datenav #cb_roc_date,.cb-datenav #cb_save_status{grid-column:1/-1;margin:0!important;text-align:center;}
+  .cb-counter>div:last-child{grid-column:1/-1;}
+  .cb-submit{width:100%;min-height:44px;}
+  .form-row.os-row{grid-template-columns:minmax(0,1fr) 104px auto!important;}
+  .os-row>.btn{grid-column:auto!important;justify-self:auto!important;min-width:38px;min-height:38px;}
+  .os-chip{min-height:34px;font-size:14px;padding:4px 12px;}
+  #page-cashbook th .btn-xs{min-height:32px;}
+  #cb_expense_rows .cb-x{min-width:36px;min-height:36px;}
   /* 資料表 → 卡片（每列一張，左邊欄位名稱、右邊數值） */
   .tbl-wrap{overflow:visible;background:transparent;border:none;box-shadow:none;border-radius:0;}
   .tbl-wrap table{min-width:0;}
@@ -571,6 +639,7 @@ a.btn{text-decoration:none;}
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
+    <button class="modal-close sidebar-close" onclick="toggleSidebar()" aria-label="關閉選單">×</button>
     <div class="logo-mark">
       <div class="logo-icon"><span class="px" data-px="logo" data-px-scale="2"></span></div>
       <div class="logo-text"><div class="logo-name">Kangjie</div><div class="logo-sub">Cloud Manager</div></div>
@@ -657,13 +726,13 @@ a.btn{text-decoration:none;}
       <div class="user-info" onclick="toggleUserMenu()" style="cursor:pointer;">
         <div class="user-avatar" id="userAvatar">管</div>
         <span class="user-name" id="userName">管理者</span>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--text3);margin-left:2px;"><polyline points="6 9 12 15 18 9"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="color:var(--ro-ink2);margin-left:2px;"><polyline points="6 9 12 15 18 9"/></svg>
       </div>
-      <div class="notif-dropdown" id="userDropdown" style="width:260px;right:0;">
+      <div class="notif-dropdown" id="userDropdown">
         <div class="notif-dd-hd">
           <div>
             <div class="notif-dd-title" id="udName">管理者</div>
-            <div style="font-size:13px;color:var(--text3);" id="udRole">院長 / 系統管理員</div>
+            <div style="font-size:13px;font-weight:700;color:var(--ro-ink2);" id="udRole">院長 / 系統管理員</div>
           </div>
           <div class="user-avatar" id="udAvatar" style="width:36px;height:36px;font-size:15px;">管</div>
         </div>
@@ -766,7 +835,7 @@ a.btn{text-decoration:none;}
           <div style="font-size:14px;color:var(--text3);margin-top:2px;">櫃台助理填入當日醫師看診收入與支出，自動驗算並併入營業額管理</div>
         </div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <select class="fs" id="cb_clinic_top" onchange="cbOnClinicChange()" style="padding:7px 12px;font-size:14px;border:1.5px solid var(--blue-l);border-radius:4px;font-weight:600;">
+          <select class="fs" id="cb_clinic_top" onchange="cbOnClinicChange()" style="width:auto;min-width:170px;font-weight:700;">
             <option value="kj">康潔牙醫診所</option>
             <option value="kjm">康潔美牙醫診所</option>
           </select>
@@ -778,18 +847,18 @@ a.btn{text-decoration:none;}
 
       <!-- Date Navigator -->
       <div class="card" style="padding:14px 16px;margin-bottom:14px;background:var(--blue-l);border:1px solid var(--blue);">
-        <div style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
+        <div class="cb-datenav" style="display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;">
           <button class="btn btn-outline btn-sm" onclick="cbChangeDay(-1)" title="前一天" style="padding:6px 12px;">◀ 前一天</button>
-          <input type="date" id="cb_date" onchange="cbOnDateChange()" style="padding:7px 14px;font-size:15px;font-weight:600;color:var(--blue);border:1.5px solid var(--blue);border-radius:4px;background:#fff;">
+          <input type="date" id="cb_date" class="fi" onchange="cbOnDateChange()" style="width:auto;font-size:15px;font-weight:800;color:var(--blue-d);">
           <button class="btn btn-outline btn-sm" onclick="cbChangeDay(1)" title="後一天" style="padding:6px 12px;">後一天 ▶</button>
           <span id="cb_roc_date" style="font-size:14px;color:var(--blue-d);font-weight:600;margin-left:8px;"></span>
-          <span id="cb_save_status" style="font-size:13px;color:var(--text3);margin-left:auto;"></span>
+          <span id="cb_save_status" style="font-size:13px;font-weight:700;color:var(--text3);margin-left:auto;"></span>
         </div>
       </div>
 
       <!-- Form Card -->
       <div class="card cb-sheet" style="padding:24px 28px;">
-        <div style="text-align:center;font-size:21px;font-weight:700;letter-spacing:.3em;color:var(--purple);margin-bottom:14px;">每　日　收　支　表</div>
+        <div style="text-align:center;font-size:21px;font-weight:800;letter-spacing:.3em;color:var(--ro-ink);margin-bottom:14px;text-shadow:0 1px 0 #fff;">每　日　收　支　表</div>
 
         <!-- Shift Names -->
         <div id="cb_shift_grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border:1px solid var(--gray-border);border-radius:4px 4px 0 0;overflow:hidden;margin-bottom:0;">
@@ -862,9 +931,9 @@ a.btn{text-decoration:none;}
         </div>
 
         <!-- 今日入帳 -->
-        <div style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;color:var(--blue);background:var(--blue-l);border:1.5px solid var(--blue);border-radius:4px;padding:6px 0;margin-bottom:0;">今　日　入　帳</div>
+        <div class="cb-band" style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;border-radius:4px;padding:6px 0;margin-bottom:0;">今　日　入　帳</div>
 
-        <div class="cb-tbl"><table style="width:100%;border-collapse:collapse;font-size:14px;border:1px solid var(--gray-border);">
+        <div class="cb-swipe">← 左右滑動查看其他欄位 →</div><div class="cb-tbl"><table style="width:100%;border-collapse:collapse;font-size:14px;border:1px solid var(--gray-border);">
           <thead>
             <tr style="background:var(--blue-l);color:var(--blue);">
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);width:90px;">醫師</th>
@@ -872,7 +941,7 @@ a.btn{text-decoration:none;}
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">植牙</th>
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">隱適美</th>
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">傳統矯正</th>
-              <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">其他自費 <button type="button" onclick="cbEditOtherSelfItems()" title="設定其他自費項目" style="background:none;border:none;cursor:pointer;font-size:13px;color:var(--blue);">⚙️</button></th>
+              <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">其他自費 <button type="button" class="btn btn-outline btn-xs" onclick="cbEditOtherSelfItems()" title="設定其他自費快選項目" style="margin-left:4px;padding:0 6px;">⚙ 快選</button></th>
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">現金</th>
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">刷卡</th>
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">小計</th>
@@ -907,9 +976,9 @@ a.btn{text-decoration:none;}
         </div>
 
         <!-- 今日支出 -->
-        <div style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;color:#C49A2A;background:#FDF5DC;border:1.5px solid #ECD182;border-radius:4px;padding:6px 0;margin-bottom:0;">今　日　支　出</div>
+        <div class="cb-band cb-band-warm" style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;border-radius:4px;padding:6px 0;margin-bottom:0;">今　日　支　出</div>
 
-        <div class="cb-tbl"><table style="width:100%;border-collapse:collapse;font-size:14px;border:1px solid var(--gray-border);border-bottom:none;">
+        <div class="cb-swipe">← 左右滑動查看其他欄位 →</div><div class="cb-tbl"><table style="width:100%;border-collapse:collapse;font-size:14px;border:1px solid var(--gray-border);border-bottom:none;">
           <thead>
             <tr style="background:var(--blue-l);color:var(--blue);">
               <th style="padding:7px 6px;font-size:13px;font-weight:600;border:1px solid var(--gray-border);">支出單位</th>
@@ -935,7 +1004,7 @@ a.btn{text-decoration:none;}
         </div>
 
         <!-- 今日總計 -->
-        <div style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;color:var(--blue);background:var(--blue-l);border:1.5px solid var(--blue);border-radius:4px;padding:6px 0;margin-bottom:12px;">今　日　總　計</div>
+        <div class="cb-band" style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;border-radius:4px;padding:6px 0;margin-bottom:12px;">今　日　總　計</div>
 
         <div class="cb-totals" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
           <div style="background:#fff;border:1.5px solid var(--gray-border);border-radius:5px;padding:14px 12px;text-align:center;">
@@ -953,15 +1022,15 @@ a.btn{text-decoration:none;}
             <div style="font-size:12px;color:var(--text3);font-style:italic;">＝ 支出現金合計</div>
             <div id="cb_expense_display" style="font-size:23px;font-weight:700;color:var(--blue);margin-top:6px;">$0</div>
           </div>
-          <div style="background:linear-gradient(135deg,#fff,#FCE8EF);border:1.5px solid var(--purple);border-radius:5px;padding:14px 12px;text-align:center;">
-            <div style="font-size:13px;color:var(--text3);font-weight:600;letter-spacing:.08em;">現金總盈餘</div>
+          <div style="background:var(--ro-pink-l);border:2px solid var(--ro-pink);border-radius:5px;padding:14px 12px;text-align:center;">
+            <div style="font-size:13px;color:var(--ro-rose);font-weight:800;letter-spacing:.08em;">現金總盈餘</div>
             <div style="font-size:12px;color:var(--text3);font-style:italic;">現金總收入 − 總支出</div>
-            <div id="cb_cash_net" style="font-size:23px;font-weight:700;color:var(--purple);margin-top:6px;">$0</div>
+            <div id="cb_cash_net" style="font-size:23px;font-weight:700;color:var(--ro-rose);margin-top:6px;">$0</div>
           </div>
         </div>
 
         <!-- 櫃台金額點收 -->
-        <div style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;color:var(--blue);background:var(--blue-l);border:1.5px solid var(--blue);border-radius:4px;padding:6px 0;margin-bottom:12px;">櫃　台　金　額　點　收</div>
+        <div class="cb-band" style="text-align:center;font-size:15px;font-weight:700;letter-spacing:.3em;border-radius:4px;padding:6px 0;margin-bottom:12px;">櫃　台　金　額　點　收</div>
 
         <div class="cb-counter" style="display:grid;grid-template-columns:1.2fr 1fr 1.2fr 1.2fr 1fr;gap:10px;margin-bottom:14px;">
           <div style="background:#fff;border:1.5px solid var(--gray-border);border-radius:5px;padding:14px 10px;text-align:center;">
@@ -995,10 +1064,10 @@ a.btn{text-decoration:none;}
         <div style="background:#E8F8F0;border:1.5px solid #A8DDB5;border-radius:5px;padding:14px;margin-top:16px;">
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
             <div style="flex:1;min-width:200px;">
-              <div style="font-weight:600;color:#1E8C52;font-size:14px;margin-bottom:2px;">✅ 確認下診結算 → 併入營業額管理</div>
+              <div style="font-weight:800;color:#1a6a3c;font-size:15px;margin-bottom:2px;">✅ 確認下診結算 → 併入營業額管理</div>
               <div style="font-size:13px;color:var(--text3);">確認櫃台金額無誤後，按下按鈕將今日資料正式提交至營業額管理</div>
             </div>
-            <button class="btn btn-green btn-sm" onclick="cbSubmitToRevenue()" style="background:#3AC47D;color:#fff;font-weight:600;padding:9px 20px;font-size:14px;">💾 確認結算並併入營業額</button>
+            <button class="btn btn-blue cb-submit" onclick="cbSubmitToRevenue()" style="padding:8px 20px;font-size:15px;">💾 確認結算並併入營業額</button>
           </div>
           <div id="cb_submit_status" style="font-size:13px;color:var(--text3);margin-top:8px;"></div>
         </div>
@@ -1797,7 +1866,7 @@ function cbBuildDoctorRow(name,idx){
       <input type="hidden" data-doc="${idx}" data-field="otherSelf" value="0">
       <input type="hidden" data-doc="${idx}" data-field="otherSelfItems" value="[]">
     </td>
-    <td style="padding:0;border:1px solid var(--gray-border);background:#E8F8F0;"><input type="number" data-doc="${idx}" data-field="cash" placeholder="0" oninput="cbCalc();cbAutoSave()" style="width:100%;border:none;padding:7px 4px;text-align:center;font-size:14px;background:#E8F8F0;outline:none;font-weight:600;color:#1E8C52;"></td>
+    <td style="padding:0;border:1px solid var(--gray-border);background:#E8F8F0;"><input type="number" data-doc="${idx}" data-field="cash" placeholder="0" oninput="cbCalc();cbAutoSave()" style="width:100%;border:none;padding:7px 4px;text-align:center;font-size:14px;background:#E8F8F0;outline:none;font-weight:600;color:#1a6a3c;"></td>
     <td style="padding:0;border:1px solid var(--gray-border);background:#EBF2FD;"><input type="number" data-doc="${idx}" data-field="card" placeholder="0" oninput="cbCalc();cbAutoSave()" style="width:100%;border:none;padding:7px 4px;text-align:center;font-size:14px;background:#EBF2FD;outline:none;font-weight:600;color:var(--blue);"></td>
     <td data-doc="${idx}" data-field="subtotal" style="padding:7px 4px;border:1px solid var(--gray-border);text-align:center;font-weight:700;color:var(--purple);font-size:14px;background:#FCE8EF;">$0</td>
     <td style="padding:0;border:1px solid var(--gray-border);"><input type="text" data-doc="${idx}" data-field="receiver" placeholder="姓名" oninput="cbAutoSave()" style="width:100%;border:none;padding:7px 4px;text-align:center;font-size:14px;background:#FAFBFC;outline:none;"></td>
@@ -1833,14 +1902,14 @@ function cbOpenOtherSelf(idx){
   const presets=DB.otherSelfPresets||['洗牙','美白','牙周治療','根管治療','拔牙','補牙','牙冠','假牙','牙橋','貼片','口內掃描','其他'];
 
   const buildRows=()=>items.map((it,i)=>{
-    const presetButtons=presets.map(p=>`<button type="button" onclick="document.getElementById('os_desc_${i}').value='${p.replace(/'/g,"\\'")}'" style="padding:2px 8px;font-size:12px;border:1px solid var(--gray-border);background:#fff;border-radius:4px;cursor:pointer;font-family:inherit;color:var(--text2);margin:1px;">${p}</button>`).join('');
+    const presetButtons=presets.map(p=>`<button type="button" class="os-chip" onclick="document.getElementById('os_desc_${i}').value='${p.replace(/'/g,"\\'")}'">${p}</button>`).join('');
     return `<div style="background:#F8FAFC;border-radius:4px;padding:10px;margin-bottom:6px;border:1px solid var(--gray-border);">
-      <div class="form-row" style="margin-bottom:4px;">
+      <div class="form-row os-row" style="margin-bottom:4px;">
         <div class="fg"><label class="fl">項目說明</label><input type="text" id="os_desc_${i}" class="fi" value="${(it.description||'').replace(/"/g,'&quot;')}" placeholder="例：洗牙、美白、牙周治療…"></div>
         <div class="fg"><label class="fl">金額 NT$</label><input type="number" id="os_amt_${i}" class="fi" value="${it.amount||''}" placeholder="0"></div>
-        <button type="button" class="btn btn-red btn-sm" style="margin-top:20px;flex-shrink:0;" onclick="cbOsRemove(${idx},${i})">✕</button>
+        <button type="button" class="btn btn-red btn-sm" onclick="cbOsRemove(${idx},${i})" title="移除此項">✕</button>
       </div>
-      <div style="font-size:12px;color:var(--text3);margin-top:4px;">快選：${presetButtons}</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text2);margin-top:4px;">快選：${presetButtons}</div>
     </div>`;
   }).join('');
 
@@ -1851,8 +1920,8 @@ function cbOpenOtherSelf(idx){
     <div id="os_rows">${buildRows()}</div>
     <button type="button" class="btn btn-outline btn-sm" onclick="cbOsAdd(${idx})" style="margin-top:6px;">＋ 新增項目</button>
     <div style="background:#E8F8F0;border-radius:4px;padding:10px;margin-top:14px;display:flex;justify-content:space-between;align-items:center;">
-      <span style="font-size:14px;font-weight:600;color:#1E8C52;">小計</span>
-      <span id="os_total" style="font-size:19px;font-weight:700;color:#1E8C52;">$0</span>
+      <span style="font-size:14px;font-weight:600;color:#1a6a3c;">小計</span>
+      <span id="os_total" style="font-size:19px;font-weight:700;color:#1a6a3c;">$0</span>
     </div>
   `,`
     <button class="btn btn-outline" onclick="closeModal()">取消</button>
@@ -1912,14 +1981,14 @@ function cbOsRebuild(idx){
   const items=window._cbOsItems[idx];
   const presets=DB.otherSelfPresets||['洗牙','美白','牙周治療','根管治療','拔牙','補牙','牙冠','假牙','牙橋','貼片','口內掃描','其他'];
   const rowsHtml=items.map((it,i)=>{
-    const presetButtons=presets.map(p=>`<button type="button" onclick="document.getElementById('os_desc_${i}').value='${p.replace(/'/g,"\\'")}'" style="padding:2px 8px;font-size:12px;border:1px solid var(--gray-border);background:#fff;border-radius:4px;cursor:pointer;font-family:inherit;color:var(--text2);margin:1px;">${p}</button>`).join('');
+    const presetButtons=presets.map(p=>`<button type="button" class="os-chip" onclick="document.getElementById('os_desc_${i}').value='${p.replace(/'/g,"\\'")}'">${p}</button>`).join('');
     return `<div style="background:#F8FAFC;border-radius:4px;padding:10px;margin-bottom:6px;border:1px solid var(--gray-border);">
-      <div class="form-row" style="margin-bottom:4px;">
+      <div class="form-row os-row" style="margin-bottom:4px;">
         <div class="fg"><label class="fl">項目說明</label><input type="text" id="os_desc_${i}" class="fi" value="${(it.description||'').replace(/"/g,'&quot;')}" placeholder="例：洗牙、美白、牙周治療…"></div>
         <div class="fg"><label class="fl">金額 NT$</label><input type="number" id="os_amt_${i}" class="fi" value="${it.amount||''}" placeholder="0"></div>
-        <button type="button" class="btn btn-red btn-sm" style="margin-top:20px;flex-shrink:0;" onclick="cbOsRemove(${idx},${i})">✕</button>
+        <button type="button" class="btn btn-red btn-sm" onclick="cbOsRemove(${idx},${i})" title="移除此項">✕</button>
       </div>
-      <div style="font-size:12px;color:var(--text3);margin-top:4px;">快選：${presetButtons}</div>
+      <div style="font-size:13px;font-weight:700;color:var(--text2);margin-top:4px;">快選：${presetButtons}</div>
     </div>`;
   }).join('');
   document.getElementById('os_rows').innerHTML=rowsHtml;
@@ -1995,7 +2064,7 @@ function cbAddExpenseRow(data){
     <td style="padding:0;border:1px solid var(--gray-border);"><input type="number" class="cb-exp-other" placeholder="0" value="${cbEsc(d.other||'')}" oninput="cbCalc();cbAutoSave()" style="width:100%;border:none;padding:7px 4px;text-align:center;font-size:14px;background:#FAFBFC;outline:none;"></td>
     <td style="padding:0;border:1px solid var(--gray-border);"><input type="text" class="cb-exp-note" placeholder="備註…" value="${cbEsc(d.note||'')}" oninput="cbAutoSave()" style="width:100%;border:none;padding:7px 10px;text-align:left;font-size:14px;background:#FAFBFC;outline:none;"></td>
     <td style="padding:0;border:1px solid var(--gray-border);"><input type="text" class="cb-exp-receiver" placeholder="姓名" value="${cbEsc(d.receiver||'')}" oninput="cbAutoSave()" style="width:100%;border:none;padding:7px 4px;text-align:center;font-size:14px;background:#FAFBFC;outline:none;"></td>
-    <td style="padding:0;border:1px solid var(--gray-border);text-align:center;background:#FAFBFC;"><button type="button" class="btn btn-red btn-xs" onclick="cbRemoveExpenseRow(this)" style="padding:2px 6px;">×</button></td>
+    <td style="padding:0;border:1px solid var(--gray-border);text-align:center;background:#FAFBFC;"><button type="button" class="btn btn-red btn-xs cb-x" onclick="cbRemoveExpenseRow(this)" title="刪除此筆">×</button></td>
   `;
   tbody.appendChild(tr);
   if(!data){cbCalc();cbAutoSave();tr.querySelector('.cb-exp-unit').focus();}
@@ -2075,15 +2144,15 @@ function cbCalc(){
     if(Math.abs(diff)<0.01){
       verifyResult.textContent='✓ 相符';
       verifyFormula.textContent='金額完全一致';
-      verifyCard.style.background='linear-gradient(135deg,#fff,#E8F8F0)';
-      verifyCard.style.borderColor='#3AC47D';
-      verifyResult.style.color='#1E8C52';
+      verifyCard.style.background='#e3f5ea';
+      verifyCard.style.borderColor='#2d7f4e';
+      verifyResult.style.color='#1a6a3c';
     } else {
       verifyResult.textContent=(diff>0?'+':'')+cbFmt(diff);
       verifyFormula.textContent=diff>0?'實際多於應有':'實際少於應有';
-      verifyCard.style.background='linear-gradient(135deg,#fff,#FCE8EF)';
-      verifyCard.style.borderColor='var(--purple)';
-      verifyResult.style.color='var(--purple)';
+      verifyCard.style.background=diff>0?'#fff3db':'#fde8e8';
+      verifyCard.style.borderColor=diff>0?'#c77a0e':'#cf3b3b';
+      verifyResult.style.color=diff>0?'#8a5200':'#b02727';
     }
   }
 }
@@ -2193,7 +2262,7 @@ function cbAutoSave(){
     cbSaveStore(clinic,store);
     const t=new Date();
     const tt=`${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}:${String(t.getSeconds()).padStart(2,'0')}`;
-    if(status){status.textContent=`✓ 已自動儲存 ${tt}`;status.style.color='#1E8C52';}
+    if(status){status.textContent=`✓ 已自動儲存 ${tt}`;status.style.color='#1a6a3c';}
     cbRenderHistory();
   },400);
 }
@@ -2263,7 +2332,7 @@ function cbLoadDay(){
     });
     if(Array.isArray(d.expenses)) d.expenses.forEach(e=>cbAddExpenseRow(e));
     const status=document.getElementById('cb_save_status');
-    if(status){status.textContent='✓ 已載入此日期紀錄';status.style.color='#1E8C52';}
+    if(status){status.textContent='✓ 已載入此日期紀錄';status.style.color='#1a6a3c';}
   } else {
     const status=document.getElementById('cb_save_status');
     if(status){status.textContent='此日期無紀錄，輸入後自動儲存';status.style.color='var(--text3)';}
@@ -2287,7 +2356,7 @@ function cbRenderHistory(){
     const label=`${tw}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')}`;
     const submitted=store[date]?._submittedToRevenue;
     const active=date===current;
-    return `<button onclick="cbLoadDate('${date}')" style="background:${active?'var(--purple)':submitted?'#E8F8F0':'var(--blue-l)'};color:${active?'#fff':submitted?'#1E8C52':'var(--blue)'};border:1px solid ${active?'var(--purple)':submitted?'#A8DDB5':'var(--blue)'};padding:5px 11px;border-radius:4px;font-size:13px;cursor:pointer;font-weight:600;font-family:inherit;">${label}${submitted?' ✓':''}</button>`;
+    return `<button onclick="cbLoadDate('${date}')" style="background:${active?'var(--ro-pink-l)':submitted?'#E8F8F0':'var(--blue-l)'};color:${active?'var(--ro-rose)':submitted?'#1a6a3c':'var(--blue-d)'};border:${active?'2px solid var(--ro-pink)':submitted?'1px solid #A8DDB5':'1px solid var(--blue)'};padding:6px 12px;min-height:34px;border-radius:4px;font-size:14px;cursor:pointer;font-weight:700;font-family:inherit;">${label}${submitted?' ✓':''}</button>`;
   }).join('');
 }
 
@@ -2341,7 +2410,7 @@ async function cbSubmitToRevenue(){
     `• 現金支出：${cbFmt(expCash)}\n\n` +
     (warnMsg?warnMsg+'\n\n仍要繼續嗎？':'確認提交？');
 
-  const ok=await customConfirm(confirmMsg,!!warnMsg);
+  const ok=await customConfirm(confirmMsg,!!warnMsg,warnMsg?'仍要提交':'確認提交');
   if(!ok)return;
 
   // Build doctors array for revenue record
@@ -2411,7 +2480,7 @@ async function cbSubmitToRevenue(){
 
   notify('✅ 已成功併入營業額管理！');
   const ss=document.getElementById('cb_submit_status');
-  if(ss) ss.innerHTML=`<span style="color:#1E8C52;font-weight:600;">✓ 已於 ${new Date().toLocaleString('zh-TW')} 提交至營業額管理</span>`;
+  if(ss) ss.innerHTML=`<span style="color:#1a6a3c;font-weight:600;">✓ 已於 ${new Date().toLocaleString('zh-TW')} 提交至營業額管理</span>`;
   cbRenderHistory();
 }
 
@@ -2509,7 +2578,7 @@ function renderLineChart(){
   const maxV=allVals.length?Math.max(...allVals)*1.2:250000;
   // 依容器實際寬度繪製，手機上座標文字不會被縮小
   const cw=document.getElementById('lineChartWrap').clientWidth||500;
-  const W=Math.round(Math.max(300,cw)),H=W<480?180:Math.round(Math.min(220,Math.max(150,W*0.3))),padL=46,padR=10,padT=10,padB=24;
+  const W=Math.round(Math.max(300,cw)),H=W<480?180:Math.round(Math.min(220,Math.max(150,W*0.3))),padL=50,padR=10,padT=10,padB=24;
   const iW=W-padL-padR,iH=H-padT-padB;
   const n=labels.length;
   const px=(i)=>padL+i*(iW/(n-1||1));
@@ -2517,7 +2586,7 @@ function renderLineChart(){
   const gridVals=[0,Math.round(maxV/4),Math.round(maxV/2),Math.round(maxV*3/4),Math.round(maxV)];
   const grid=gridVals.map(v=>`
     <line x1="${padL}" y1="${py(v)}" x2="${W-padR}" y2="${py(v)}" stroke="#d5deec" stroke-width="1" stroke-dasharray="3 3"/>
-    <text x="${padL-6}" y="${py(v)+4}" text-anchor="end" font-size="11" font-weight="700" fill="#56617f">${v>=1000?(v/1000).toFixed(0)+'K':v}</text>
+    <text x="${padL-6}" y="${py(v)+4}" text-anchor="end" font-size="12" font-weight="700" fill="#56617f">${v>=1000?(v/1000).toFixed(0)+'K':v}</text>
   `).join('');
   const mkLine=(data,color,fillColor)=>{
     if(data.every(v=>v===0)) return '';
@@ -2527,7 +2596,7 @@ function renderLineChart(){
       <polyline points="${pts}" fill="none" stroke="${color}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
       ${data.map((v,i)=>v>0?`<rect x="${px(i)-3}" y="${py(v)-3}" width="6" height="6" fill="${color}" stroke="#fff" stroke-width="1"/>`:'').join('')}`;
   };
-  const xLabels=labels.map((l,i)=>l?`<text x="${px(i)}" y="${H-4}" text-anchor="middle" font-size="11" font-weight="700" fill="#56617f">${l}</text>`:'').join('');
+  const xLabels=labels.map((l,i)=>l?`<text x="${px(i)}" y="${H-4}" text-anchor="middle" font-size="12" font-weight="700" fill="#56617f">${l}</text>`:'').join('');
   document.getElementById('lineChartWrap').innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;overflow:visible;display:block;background:#fff;border:1px solid #c9d4e6;border-radius:4px;">${grid}${mkLine(kjData,'#3462c4','#3462c4')}${mkLine(kjmData,'#8a4fc0','#8a4fc0')}${xLabels}</svg>`;
 }
 
@@ -2541,7 +2610,7 @@ function renderDonut(revs){
     {label:'自費收入',val:self,color:'#f0a020'},
     {label:'掛號收入',val:reg,color:'#2fb35a'},
   ];
-  const R=48,CX=58,CY=58,C=2*Math.PI*R;
+  const R=54,CX=66,CY=66,C=2*Math.PI*R;
   let offset=0;
   const slices=segments.map(s=>{
     const pct=s.val/total;const dash=pct*C;
@@ -2550,7 +2619,7 @@ function renderDonut(revs){
   }).join('');
   const legend=segments.map(s=>`<div class="donut-leg-item"><div class="donut-leg-dot" style="background:${s.color}"></div><span class="donut-leg-label">${s.label}</span><span class="donut-leg-pct">${total>1?(s.val/total*100).toFixed(1)+'%':'0%'}</span></div>`).join('');
   document.getElementById('donutWrap').innerHTML=`
-    <svg width="116" height="116" style="flex-shrink:0;"><circle cx="${CX}" cy="${CY}" r="${R+9}" fill="#fff" stroke="#9fb0cf" stroke-width="1"/><circle cx="${CX}" cy="${CY}" r="${R}" fill="none" stroke="#e3e9f3" stroke-width="18"/>${slices}<circle cx="${CX}" cy="${CY}" r="${R-9}" fill="#fff" stroke="#9fb0cf" stroke-width="1"/><text x="${CX}" y="${CY-5}" text-anchor="middle" font-size="11" font-weight="700" fill="#56617f">總營業額</text><text x="${CX}" y="${CY+11}" text-anchor="middle" font-size="${total>=1e6?10:11}" font-weight="800" fill="#1d2749">${total>1?Number(total).toLocaleString():'0'}</text></svg>
+    <svg width="132" height="132" style="flex-shrink:0;"><circle cx="${CX}" cy="${CY}" r="${R+9}" fill="#fff" stroke="#9fb0cf" stroke-width="1"/><circle cx="${CX}" cy="${CY}" r="${R}" fill="none" stroke="#e3e9f3" stroke-width="18"/>${slices}<circle cx="${CX}" cy="${CY}" r="${R-9}" fill="#fff" stroke="#9fb0cf" stroke-width="1"/><text x="${CX}" y="${CY-5}" text-anchor="middle" font-size="12" font-weight="700" fill="#56617f">總營業額</text><text x="${CX}" y="${CY+11}" text-anchor="middle" font-size="${total>=1e7?12:13}" font-weight="800" fill="#1d2749">${total>1?Number(total).toLocaleString():'0'}</text></svg>
     <div class="donut-legend">${legend}</div>`;
 }
 
@@ -3178,11 +3247,11 @@ function customPrompt(title, defaultValue=''){
   });
 }
 
-function customConfirm(message,danger=false){
+function customConfirm(message,danger=false,okLabel){
   return new Promise(resolve=>{
     setModal('確認操作',`<div style="font-size:14px;color:var(--text);line-height:1.6;white-space:pre-wrap;">${message}</div>`,`
       <button class="btn btn-outline" onclick="window._ccResolve(false);closeModal();">取消</button>
-      <button class="btn ${danger?'btn-red':'btn-blue'}" onclick="window._ccResolve(true);closeModal();" style="${danger?'background:#E05A5A;color:#fff;':''}">${danger?'確定刪除':'確定'}</button>
+      <button class="btn ${danger?'btn-red':'btn-blue'}" onclick="window._ccResolve(true);closeModal();">${okLabel||(danger?'確定刪除':'確定')}</button>
     `);
     document.getElementById('modalBg').classList.add('open');
     window._ccResolve=resolve;
@@ -3546,7 +3615,7 @@ function renderBackupStats(){
   if(cloudEl){
     const cfg=getCloudConfig();
     if(cfg.binId&&cfg.apiKey){
-      cloudEl.innerHTML=`<span style="color:#1E8C52;font-weight:600;">✓ 已啟用</span> Bin: <code style="background:#F8FAFC;padding:1px 6px;border-radius:3px;">${cfg.binId.slice(0,8)}…</code>`;
+      cloudEl.innerHTML=`<span style="color:#1a6a3c;font-weight:600;">✓ 已啟用</span> Bin: <code style="background:#F8FAFC;padding:1px 6px;border-radius:3px;">${cfg.binId.slice(0,8)}…</code>`;
     } else {
       cloudEl.innerHTML='<span style="color:#C49A2A;">⚠ 尚未設定</span>';
     }
@@ -3625,6 +3694,7 @@ function toggleDatePicker(){
     <button class="btn btn-outline" onclick="closeModal()">取消</button>
     <button class="btn btn-blue" onclick="confirmDateChange()">確定</button>
   `);
+  document.querySelector('#modalBg .modal')?.classList.add('modal-sm');
   document.getElementById('modalBg').classList.add('open');
 }
 
@@ -3682,6 +3752,7 @@ function closeModal(){document.getElementById('modalBg').classList.remove('open'
 function closeBgModal(e){if(e.target===document.getElementById('modalBg'))closeModal();}
 
 function setModal(title,body,footer){
+  document.querySelector('#modalBg .modal')?.classList.remove('modal-sm');
   document.getElementById('modalTitle').textContent=title;
   document.getElementById('modalBody').innerHTML=body;
   document.getElementById('modalFt').innerHTML=footer;
@@ -4121,7 +4192,7 @@ function buildItemModal(editId=null){
     <div class="fg"><label class="fl">所屬診所</label><select class="fs" id="it_clinic">${clinicOpts}</select></div>
     ${!editId?`
     <div class="fg" style="background:#E8F8F0;border:1px solid #A8DDB5;border-radius:5px;padding:10px 12px;margin-bottom:14px;">
-      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;font-weight:500;color:#1E8C52;">
+      <label style="display:flex;align-items:center;gap:8px;cursor:pointer;font-size:14px;font-weight:500;color:#1a6a3c;">
         <input type="checkbox" id="it_bothClinics" style="width:18px;height:18px;cursor:pointer;">
         ✨ 同時新增至兩間診所（康潔 + 康潔美）
       </label>
@@ -4439,7 +4510,7 @@ function renderNotifDropdown(){
     if(!groups[cat]) return;
     html += `<div class="notif-dd-section"><div class="notif-dd-sec-title">${catIcon[cat]||''} ${cat}</div>`;
     groups[cat].forEach(n => {
-      html += `<div class="notif-item ${n.read?'read':''}" onclick="clickNotif('${n.id}')" style="${n.read?'opacity:0.5;':''}">
+      html += `<div class="notif-item ${n.read?'read':''}" onclick="clickNotif('${n.id}')">
         <div class="ni-icon" style="background:${n.iconBg};">${pxSvg(({"📦":"inventory","⚠️":"alert","🚨":"alert","🧾":"vendor","💰":"revenue"})[n.icon]||"",2)||n.icon}</div>
         <div class="ni-body">
           <div class="ni-title">
@@ -4658,7 +4729,7 @@ function showSyncSetup(){
   const cfg=getCloudConfig();
   const isSandbox=window.location.protocol==='blob:'||window.location.hostname===''||window.location.hostname.includes('claude');
   setModal('☁️ 雲端同步設定',`
-    ${isSandbox?`<div class="alert-banner warning" style="margin-bottom:14px;background:#FFF6E5;border-color:#ECD182;color:#8a6e1c;">
+    ${isSandbox?`<div class="alert-banner warning" style="margin-bottom:14px;">
       <div style="font-weight:700;margin-bottom:6px;">⚠️ 偵測到預覽環境，雲端同步無法在此運作</div>
       <div style="font-size:13px;line-height:1.7;">
         Claude 預覽頁面會封鎖外部網路請求（CORS 限制），這是安全機制不是設定問題。<br><br>
@@ -4677,8 +4748,8 @@ function showSyncSetup(){
         設定一次後，所有裝置（手機/電腦）開啟連結 → 登入 → 自動同步同一份資料。
       </div>
     </div>
-    <div style="background:#FFF6E5;border-radius:4px;padding:12px;margin-bottom:14px;font-size:14px;line-height:1.7;">
-      <div style="font-weight:600;color:#C49A2A;margin-bottom:6px;">📋 設定步驟（5分鐘）</div>
+    <div style="background:#FFF6E5;border:1px solid #e0bd62;border-radius:4px;padding:12px;margin-bottom:14px;font-size:14px;line-height:1.7;">
+      <div style="font-weight:800;color:var(--ro-brown);margin-bottom:6px;">📋 設定步驟（5分鐘）</div>
       1. 前往 <a href="https://jsonbin.io" target="_blank" style="color:var(--blue);font-weight:600;">jsonbin.io</a> 註冊免費帳號（用 Google 登入即可）<br>
       2. 進入後點 <b>API Keys</b> → 複製 <b>Master Key</b>（X-Master-Key）<br>
       3. 點 <b>Create Bin</b> → 隨便輸入 <code>{}</code> 後存檔 → 複製 <b>Bin ID</b><br>
@@ -4696,7 +4767,7 @@ function showSyncSetup(){
       <label class="fl">同步密碼（選填，加密提示）</label>
       <input class="fi" type="text" id="cs_label" value="${cfg.label||'康潔醫療'}" placeholder="識別用標籤">
     </div>
-    <div style="background:#E8F8F0;border-radius:4px;padding:10px;font-size:13px;color:#1E8C52;line-height:1.6;">
+    <div style="background:#E8F8F0;border:1px solid #9fd6b3;border-radius:4px;padding:10px;font-size:13px;color:#1a6a3c;line-height:1.6;">
       ✅ 設定後：每次儲存資料會自動上傳；登入時會自動下載最新版。<br>
       ⚠️ 請妥善保管 Bin ID 與 API Key，不要外流（其他人若取得即可讀取/修改資料）。
     </div>
