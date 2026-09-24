@@ -512,6 +512,23 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
 .sys-toggle:hover{background:#eef4fe;}
 .page-tab{word-break:keep-all;}
 
+/* RO 細節（美術評審建議） */
+.win-hd,.card>.card-title:first-child,.card>.section-hd:first-child,.modal-hd,.notif-dd-hd,.sidebar-logo{background:repeating-linear-gradient(180deg,rgba(255,255,255,.22) 0 1px,rgba(255,255,255,0) 1px 3px),var(--ro-title);}
+.win-hd,.card>.card-title:first-child,.card>.section-hd:first-child,.modal-hd,.notif-dd-hd{border-bottom-color:#3c4866;}
+.modal,.login-win{border:1px solid #4d5d7a;box-shadow:inset 0 0 0 1px #fff,0 0 0 3px #b8d2f2,0 0 0 4px #6f86a8,0 12px 36px rgba(10,16,40,.45);}
+.notif-dropdown{box-shadow:0 0 0 3px #b8d2f2,0 0 0 4px #6f86a8,0 10px 28px rgba(15,22,50,.3);}
+.btn-blue,.chart-tab.active{background:linear-gradient(180deg,#d2ebff 0%,#8fb8ef 20%,#3d5494 21%,#2b3d70 62%,#24366d 84%,#5473c1 100%);border-color:#16192a;box-shadow:inset 0 0 0 1px rgba(200,225,255,.3),0 1px 2px rgba(29,39,73,.3);}
+.btn-blue:hover{background:linear-gradient(180deg,#e2f2ff 0%,#a3c6f5 20%,#4a63a8 21%,#33477f 62%,#2a3d78 84%,#6584d0 100%);border-color:#16192a;}
+.modal-ft{background:repeating-linear-gradient(180deg,#fdfdfe 0 3px,#eceff4 3px 5px);border-top:1px solid #aeb6c6;}
+.notif-badge{border:1px solid #ffd5c9;box-shadow:0 0 0 1px #5d1b0f,inset 0 1px 0 rgba(255,255,255,.35);}
+.item-slot{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;padding-bottom:4px;border:1px solid #b1c0d0;border-radius:5px;background:radial-gradient(ellipse 16px 5px at 50% 82%,#c3cfe6 0 85%,rgba(195,207,230,0) 100%),linear-gradient(180deg,#fff 0%,#fff 55%,#e6f0fb 100%);box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(29,39,73,.12);}
+.item-slot-sm{width:40px;height:40px;}
+.alert-banner.npc{display:flex;align-items:flex-end;gap:8px;background:none;border:none;padding:0;}
+.npc-say{position:relative;flex:1;min-width:0;background:#fffdf5;border:1px solid #d9b25a;border-radius:10px;padding:8px 14px;color:#5a3d05;box-shadow:0 2px 6px rgba(29,39,73,.12);}
+.npc-say::before{content:'';position:absolute;left:-7px;bottom:12px;width:12px;height:12px;background:#fffdf5;border-left:1px solid #d9b25a;border-bottom:1px solid #d9b25a;transform:rotate(45deg);}
+.npc-name{color:#23489a;margin-right:6px;}
+.ro-ribbon{display:block;width:max-content;max-width:100%;margin:0 auto 16px;padding:6px 40px;background:linear-gradient(180deg,#fffdf2 0%,#fff1d2 100%);border-top:2px solid #e3aa8a;border-bottom:2px solid #e3aa8a;clip-path:polygon(0 0,100% 0,calc(100% - 14px) 50%,100% 100%,0 100%,14px 50%);color:#6b4526;font-size:21px;font-weight:800;letter-spacing:.3em;text-align:center;text-shadow:0 1px 0 #fff;}
+
 /* 鍵盤操作時的焦點框 */
 .btn:focus-visible,.ctab:focus-visible,.chart-tab:focus-visible,.page-tab:focus-visible,.notif-btn:focus-visible,.mobile-menu-btn:focus-visible,.section-hd-link:focus-visible,.modal-close:focus-visible{outline:2px solid #ffb400;outline-offset:1px;}
 
@@ -612,6 +629,12 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
   #hrTable tbody td:first-child,#expTable tbody td:first-child,#labTable tbody td:first-child{padding-right:64px!important;}
   #hrTable td.td-act:last-child,#expTable td.td-act:last-child,#labTable td.td-act:last-child{position:absolute;top:4px;right:10px;width:auto;padding:0!important;border:none;min-height:0;}
   #hrTable td.td-act:last-child::before,#expTable td.td-act:last-child::before,#labTable td.td-act:last-child::before{display:none;}
+  /* 美術評審：手機標題列 = 細標題條 + 下方工具列 */
+  .win-hd:has(select,input,.chart-tabs){row-gap:12px;padding-bottom:8px;border-bottom-color:#c3cde0;background:linear-gradient(#3c4866,#3c4866) 0 36px/100% 1px no-repeat,repeating-linear-gradient(180deg,rgba(255,255,255,.22) 0 1px,rgba(255,255,255,0) 1px 3px) 0 0/100% 36px no-repeat,var(--ro-title) 0 0/100% 36px no-repeat,#eef3fa;}
+  .win-hd:has(select,input,.chart-tabs)>:first-child{flex:1 1 100%;}
+  .win-hd:has(select,input,.chart-tabs)>:not(:first-child){flex:1 1 calc(100% + 22px);margin-left:-22px;}
+  .page-tab{font-size:14px;padding:9px 2px 8px;}
+  .mobile-menu-btn{background:var(--ro-iconbox);border:2px solid #8da3c9;box-shadow:inset 0 0 0 1px #16204a,0 1px 2px rgba(29,39,73,.25);color:#fff;}
   /* 資料表 → 卡片（每列一張，左邊欄位名稱、右邊數值） */
   .tbl-wrap{overflow:visible;background:transparent;border:none;box-shadow:none;border-radius:0;}
   .tbl-wrap table{min-width:0;}
@@ -907,9 +930,9 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
             <option value="kj">康潔牙醫診所</option>
             <option value="kjm">康潔美牙醫診所</option>
           </select>
-          <button class="btn btn-outline btn-sm" onclick="cbExportCsv()">📊 匯出 CSV</button>
-          <button class="btn btn-outline btn-sm" onclick="window.print()">🖨️ 列印</button>
-          <button class="btn btn-red btn-sm" onclick="cbClearToday()">🗑️ 清除當日</button>
+          <button class="btn btn-outline btn-sm" onclick="cbExportCsv()">匯出 CSV</button>
+          <button class="btn btn-outline btn-sm" onclick="window.print()">列印</button>
+          <button class="btn btn-red btn-sm" onclick="cbClearToday()">清除當日</button>
         </div>
       </div>
 
@@ -926,7 +949,7 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
 
       <!-- Form Card -->
       <div class="card cb-sheet" style="padding:24px 28px;">
-        <div style="text-align:center;font-size:21px;font-weight:800;letter-spacing:.3em;color:var(--ro-ink);margin-bottom:14px;text-shadow:0 1px 0 #fff;">每　日　收　支　表</div>
+        <div class="ro-ribbon">每　日　收　支　表</div>
 
         <!-- Shift Names -->
         <div id="cb_shift_grid" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;border:1px solid var(--gray-border);border-radius:4px 4px 0 0;overflow:hidden;margin-bottom:0;">
@@ -1135,7 +1158,7 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
               <div style="font-weight:800;color:#1a6a3c;font-size:15px;margin-bottom:2px;">✅ 確認下診結算 → 併入營業額管理</div>
               <div style="font-size:13px;color:var(--text3);">確認櫃台金額無誤後，按下按鈕將今日資料正式提交至營業額管理</div>
             </div>
-            <button class="btn btn-blue cb-submit" onclick="cbSubmitToRevenue()" style="padding:8px 20px;font-size:15px;">💾 確認結算並併入營業額</button>
+            <button class="btn btn-blue cb-submit" onclick="cbSubmitToRevenue()" style="padding:8px 20px;font-size:15px;">確認結算並併入營業額</button>
           </div>
           <div id="cb_submit_status" style="font-size:13px;color:var(--text3);margin-top:8px;"></div>
         </div>
@@ -1159,15 +1182,15 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
         <div class="page-hd-title">進貨庫存管理</div>
         <div style="display:flex;gap:8px;">
           <button class="btn btn-outline btn-sm" onclick="openModal('newOrder')">＋ 新增訂購</button>
-          <button class="btn btn-blue btn-sm" onclick="openModal('confirmArrival')">✔ 確認到貨</button>
+          <button class="btn btn-blue btn-sm" onclick="openModal('confirmArrival')">確認到貨</button>
         </div>
       </div>
 
       <div class="page-tabs">
-        <div class="page-tab active" data-panel="invStock" onclick="setInvTab(this,'invStock')">📦 庫存總覽</div>
-        <div class="page-tab" data-panel="invOrders" onclick="setInvTab(this,'invOrders')">🛒 進貨訂購</div>
-        <div class="page-tab" data-panel="invArrivals" onclick="setInvTab(this,'invArrivals')">✅ 到貨紀錄</div>
-        <div class="page-tab" data-panel="invItems" onclick="setInvTab(this,'invItems')">📋 品項管理</div>
+        <div class="page-tab active" data-panel="invStock" onclick="setInvTab(this,'invStock')">庫存總覽</div>
+        <div class="page-tab" data-panel="invOrders" onclick="setInvTab(this,'invOrders')">進貨訂購</div>
+        <div class="page-tab" data-panel="invArrivals" onclick="setInvTab(this,'invArrivals')">到貨紀錄</div>
+        <div class="page-tab" data-panel="invItems" onclick="setInvTab(this,'invItems')">品項管理</div>
       </div>
 
       <!-- Stock Overview -->
@@ -1273,6 +1296,7 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
       </div>
       <div class="stats-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px;" id="hrStats"></div>
       <div class="card">
+        <div class="win-hd"><div class="card-title">員工名單</div></div>
         <div class="tbl-wrap" id="hrTable"></div>
       </div>
     </div>
@@ -1280,13 +1304,13 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
     <!-- ========== EXPENSES ========== -->
     <div class="page" id="page-expenses">
       <div class="page-hd"><div class="page-hd-title">支出項目管理</div><button class="btn btn-blue btn-sm" onclick="openModal('newExpense')">＋ 新增支出</button></div>
-      <div class="card"><div class="tbl-wrap" id="expTable"></div></div>
+      <div class="card"><div class="win-hd"><div class="card-title">支出紀錄</div></div><div class="tbl-wrap" id="expTable"></div></div>
     </div>
 
     <!-- ========== LAB FEES ========== -->
     <div class="page" id="page-labfees">
       <div class="page-hd"><div class="page-hd-title">技工費管理</div><button class="btn btn-blue btn-sm" onclick="openModal('newLabFee')">＋ 新增技工費</button></div>
-      <div class="card"><div class="tbl-wrap" id="labTable"></div></div>
+      <div class="card"><div class="win-hd"><div class="card-title">技工費紀錄</div></div><div class="tbl-wrap" id="labTable"></div></div>
     </div>
 
     <!-- ========== REPORTS ========== -->
@@ -1300,20 +1324,18 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
       <div class="page-hd"><div class="page-hd-title">設定管理</div></div>
 
       <div class="page-tabs" id="settingsTabs">
-        <div class="page-tab active" data-stab="stDoctors" onclick="setSettingsTab(this,'stDoctors')">👨‍⚕️ 醫師管理</div>
-        <div class="page-tab" data-stab="stUsers" onclick="setSettingsTab(this,'stUsers')">👥 使用者</div>
-        <div class="page-tab" data-stab="stBackup" onclick="setSettingsTab(this,'stBackup')">💾 備份還原</div>
-        <div class="page-tab" data-stab="stLabs" onclick="setSettingsTab(this,'stLabs')">🔧 技工所</div>
-        <div class="page-tab" data-stab="stSystem" onclick="setSettingsTab(this,'stSystem')">⚙️ 系統</div>
+        <div class="page-tab active" data-stab="stDoctors" onclick="setSettingsTab(this,'stDoctors')">醫師管理</div>
+        <div class="page-tab" data-stab="stUsers" onclick="setSettingsTab(this,'stUsers')">使用者</div>
+        <div class="page-tab" data-stab="stBackup" onclick="setSettingsTab(this,'stBackup')">備份還原</div>
+        <div class="page-tab" data-stab="stLabs" onclick="setSettingsTab(this,'stLabs')">技工所</div>
+        <div class="page-tab" data-stab="stSystem" onclick="setSettingsTab(this,'stSystem')">系統</div>
       </div>
 
       <!-- Doctors -->
       <div class="tab-panel active" id="tab-stDoctors">
         <div class="card">
-          <div class="win-hd">
-            <div><div class="card-title">醫師名單</div><div class="card-subtitle">新增的醫師會出現在所有相關選單中</div></div>
-            <button class="btn btn-blue btn-sm" onclick="addDoctorSetting()">＋ 新增醫師</button>
-          </div>
+          <div class="win-hd"><div class="card-title">醫師名單</div><button class="btn btn-blue btn-sm" onclick="addDoctorSetting()">＋ 新增醫師</button></div>
+          <div class="card-subtitle" style="margin:-2px 0 10px;">新增的醫師會出現在所有相關選單中</div>
           <div id="doctorSettingsList"></div>
         </div>
       </div>
@@ -1321,14 +1343,12 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
       <!-- Users -->
       <div class="tab-panel" id="tab-stUsers">
         <div class="card" style="margin-bottom:12px;">
-          <div class="win-hd">
-            <div><div class="card-title">使用者帳號管理</div><div class="card-subtitle">設定可登入系統的帳號與角色</div></div>
-            <button class="btn btn-blue btn-sm" onclick="addUserAccount()">＋ 新增使用者</button>
-          </div>
+          <div class="win-hd"><div class="card-title">使用者帳號管理</div><button class="btn btn-blue btn-sm" onclick="addUserAccount()">＋ 新增使用者</button></div>
+          <div class="card-subtitle" style="margin:-2px 0 10px;">設定可登入系統的帳號與角色</div>
           <div id="userAccountList"></div>
         </div>
         <div class="card">
-          <div class="card-title" style="margin-bottom:12px;">🔑 目前登入</div>
+          <div class="card-title" style="margin-bottom:12px;">目前登入</div>
           <div id="currentUserInfo"></div>
         </div>
       </div>
@@ -1342,35 +1362,33 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
         <!-- Cloud Sync Card -->
         <div class="card cloud-card" style="margin-bottom:12px;">
           <div class="win-hd">
-            <div>
-              <div class="card-title">☁️ 雲端同步（跨裝置）</div>
-              <div class="card-subtitle">設定一次後，手機/電腦/平板開啟連結即可自動同步</div>
-            </div>
+            <div class="card-title">雲端同步（跨裝置）</div>
             <div id="cloudSyncStatus" style="font-size:13px;color:var(--text3);"></div>
           </div>
+          <div class="card-subtitle" style="margin:-2px 0 10px;">設定一次後，手機/電腦/平板開啟連結即可自動同步</div>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button class="btn btn-blue btn-sm" onclick="showSyncSetup()">⚙️ 設定 / 修改</button>
-            <button class="btn btn-outline btn-sm" onclick="syncFromCloud()">⬇️ 立即下載最新</button>
-            <button class="btn btn-outline btn-sm" onclick="pushToCloud().then(()=>notify('✅ 已上傳至雲端'))">⬆️ 立即上傳</button>
+            <button class="btn btn-blue btn-sm" onclick="showSyncSetup()">設定 / 修改</button>
+            <button class="btn btn-outline btn-sm" onclick="syncFromCloud()">立即下載最新</button>
+            <button class="btn btn-outline btn-sm" onclick="pushToCloud().then(()=>notify('✅ 已上傳至雲端'))">立即上傳</button>
           </div>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
           <div class="card">
-            <div class="card-title">⬇️ 匯出備份</div>
+            <div class="card-title">匯出備份</div>
             <div class="card-subtitle" style="margin-bottom:12px;">下載 JSON 備份檔（含所有資料）</div>
-            <button class="btn btn-blue btn-full" onclick="exportData()">📦 立即匯出備份</button>
+            <button class="btn btn-blue btn-full" onclick="exportData()">立即匯出備份</button>
           </div>
           <div class="card">
-            <div class="card-title">⬆️ 匯入還原</div>
+            <div class="card-title">匯入還原</div>
             <div class="card-subtitle" style="margin-bottom:12px;">從備份 JSON 檔還原所有資料</div>
-            <button class="btn btn-outline btn-full" style="margin-bottom:6px;" onclick="document.getElementById('importFileInput').click()">📂 選擇備份檔案</button>
-            <button class="btn btn-outline btn-full" onclick="importDataFromText()">📋 貼上備份內容</button>
+            <button class="btn btn-outline btn-full" style="margin-bottom:6px;" onclick="document.getElementById('importFileInput').click()">選擇備份檔案</button>
+            <button class="btn btn-outline btn-full" onclick="importDataFromText()">貼上備份內容</button>
             <input type="file" id="importFileInput" accept=".json,application/json" style="display:none;" onchange="importData(this)">
           </div>
         </div>
         <div class="card">
-          <div class="card-title" style="margin-bottom:12px;">📊 目前資料統計</div>
+          <div class="card-title" style="margin-bottom:12px;">目前資料統計</div>
           <div id="dataStats"></div>
           <div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--gray-border);">
             <button class="btn btn-red btn-sm" onclick="clearAllData()">⚠️ 清除所有資料</button>
@@ -1382,10 +1400,8 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
       <!-- Labs -->
       <div class="tab-panel" id="tab-stLabs">
         <div class="card">
-          <div class="win-hd">
-            <div><div class="card-title">技工所管理</div><div class="card-subtitle">管理技工費計算使用的技工所</div></div>
-            <button class="btn btn-blue btn-sm" onclick="addLabSetting()">＋ 新增技工所</button>
-          </div>
+          <div class="win-hd"><div class="card-title">技工所管理</div><button class="btn btn-blue btn-sm" onclick="addLabSetting()">＋ 新增技工所</button></div>
+          <div class="card-subtitle" style="margin:-2px 0 10px;">管理技工費計算使用的技工所</div>
           <div id="labSettingsList"></div>
         </div>
       </div>
@@ -1393,14 +1409,14 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
       <!-- System -->
       <div class="tab-panel" id="tab-stSystem">
         <div class="card" style="margin-bottom:12px;">
-          <div class="card-title" style="margin-bottom:14px;">🏥 診所資訊</div>
+          <div class="card-title" style="margin-bottom:14px;">診所資訊</div>
           <div class="fg"><label class="fl">康潔牙醫診所 地址</label><input class="fi" type="text" id="sys_kj_addr" placeholder="地址" oninput="saveSysSettings()"></div>
           <div class="fg"><label class="fl">康潔牙醫診所 電話</label><input class="fi" type="text" id="sys_kj_tel" placeholder="電話" oninput="saveSysSettings()"></div>
           <div class="fg"><label class="fl">康潔美牙醫診所 地址</label><input class="fi" type="text" id="sys_kjm_addr" placeholder="地址" oninput="saveSysSettings()"></div>
           <div class="fg"><label class="fl">康潔美牙醫診所 電話</label><input class="fi" type="text" id="sys_kjm_tel" placeholder="電話" oninput="saveSysSettings()"></div>
         </div>
         <div class="card">
-          <div class="card-title" style="margin-bottom:14px;">🔔 通知設定</div>
+          <div class="card-title" style="margin-bottom:14px;">通知設定</div>
           <label class="sys-toggle"><input type="checkbox" id="sys_notif_stock" checked onchange="saveSysSettings()"><span>庫存低於安全庫存時通知</span></label>
           <label class="sys-toggle"><input type="checkbox" id="sys_notif_rev" checked onchange="saveSysSettings()"><span>今日未輸入營業額通知</span></label>
           <label class="sys-toggle"><input type="checkbox" id="sys_notif_vendor" checked onchange="saveSysSettings()"><span>未請款廠商通知</span></label>
@@ -1986,7 +2002,7 @@ function cbOpenOtherSelf(idx){
     </div>
   `,`
     <button class="btn btn-outline" onclick="closeModal()">取消</button>
-    <button class="btn btn-blue" onclick="cbOsSave(${idx})">💾 儲存項目</button>
+    <button class="btn btn-blue" onclick="cbOsSave(${idx})">儲存項目</button>
   `);
   document.getElementById('modalBg').classList.add('open');
 
@@ -2790,7 +2806,7 @@ function renderStockStats(){
 function renderLowStockAlert(){
   const low=filterClinic(DB.inventoryItems,S.clinic).filter(i=>i.currentStock<=(i.minStock||0));
   document.getElementById('lowStockAlert').innerHTML=low.length?
-    `<div class="alert-banner warning">⚠️ 有 ${low.length} 項商品庫存不足（${low.slice(0,3).map(i=>i.name).join('、')}${low.length>3?'等…':''}），建議盡快補貨</div>`:'';
+    `<div class="alert-banner warning npc"><span class="px">${pxSvg('slime',3)}</span><div class="npc-say"><b class="npc-name">[倉庫管理員]</b>有 ${low.length} 項商品庫存不足（${low.slice(0,3).map(i=>i.name).join('、')}${low.length>3?'等…':''}），建議盡快補貨</div></div>`:'';
 }
 
 function renderStockTable(){
@@ -2801,7 +2817,7 @@ function renderStockTable(){
   if(q) items=items.filter(i=>i.name?.toLowerCase().includes(q)||i.vendor?.toLowerCase().includes(q));
 
   const emptyMsg=S.clinic==='all'?'尚無庫存資料，請先建立品項':(`${CLINIC_NAMES[S.clinic]} 尚無庫存資料`);
-  if(!items.length){document.getElementById('stockTable').innerHTML=`<div class="empty"><div class="empty-icon">📦</div><div>${emptyMsg}</div></div>`;return;}
+  if(!items.length){document.getElementById('stockTable').innerHTML=`<div class="empty"><div class="empty-icon"><span class="px-box">${pxSvg('inventory',3)}</span></div><div>${emptyMsg}</div></div>`;return;}
 
   const rows=items.map(i=>{
     const pct=i.minStock>0?Math.min(100,Math.round(i.currentStock/i.minStock*50)):100;
@@ -2811,7 +2827,7 @@ function renderStockTable(){
     const clinicBadge=`<span class="badge badge-${i.clinic==='kj'?'blue':'purple'}">${i.clinic==='kj'?'康潔':'康潔美'}</span>`;
     const thumb=i.photo
       ? `<img src="${i.photo}" style="width:42px;height:42px;border-radius:4px;object-fit:cover;border:1px solid var(--gray-border);cursor:pointer;flex-shrink:0;" onclick="viewPhoto('${i.photo}','${(i.name||'').replace(/'/g,"\\'")}')">`
-      : `<div style="width:42px;height:42px;border-radius:4px;background:#F3F4F6;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;">📦</div>`;
+      : `<div class="item-slot">${pxSvg('inventory',2)}</div>`;
     return `<tr>
       <td>
         <div style="display:flex;align-items:center;gap:8px;">
@@ -2833,7 +2849,7 @@ function renderStockTable(){
       <td>
         <button class="btn btn-outline btn-xs" onclick="openModal('newOrder',null,'${i.id}')">叫貨</button>
         <button class="btn btn-outline btn-xs" onclick="openEditItem('${i.id}')">編輯</button>
-        <button class="btn btn-purple btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製此品項到另一間診所">📋 複製</button>
+        <button class="btn btn-purple btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製此品項到另一間診所">複製</button>
         <button class="btn btn-red btn-xs" onclick="deleteItem('${i.id}')">刪</button>
       </td>
     </tr>`;
@@ -2881,7 +2897,7 @@ function renderOrdersTable(){
       <td>${statusBadge(o.status)}</td>
       <td style="white-space:nowrap;">
         ${o.status!=='arrived'?`<button class="btn btn-green btn-xs" onclick="openModal('confirmArrival','${o.id}')">確認到貨</button>`:''}
-        <button class="btn btn-outline btn-xs" onclick="editOrder('${o.id}')">✏️ 編輯</button>
+        <button class="btn btn-outline btn-xs" onclick="editOrder('${o.id}')">編輯</button>
         <button class="btn btn-red btn-xs" onclick="deleteOrder('${o.id}')">刪</button>
       </td>
     </tr>`;
@@ -2908,7 +2924,7 @@ function editOrder(id){
     <div class="form-row"><div class="fg"><label class="fl">優惠方案</label><input class="fi" type="text" id="ord_promo" value="${order.promotion||''}" placeholder="例：買5送1"></div><div class="fg"><label class="fl">贈品</label><input class="fi" type="text" id="ord_gift" value="${order.gift||''}" placeholder="例：贈品說明"></div></div>
     <div class="fg"><label class="fl">狀態</label><select class="fs" id="ord_status"><option value="ordered" ${order.status==='ordered'?'selected':''}>待到貨</option><option value="partial" ${order.status==='partial'?'selected':''}>部分到貨</option><option value="arrived" ${order.status==='arrived'?'selected':''}>已完成</option></select></div>
     <div class="fg"><label class="fl">備註</label><textarea class="fta" id="ord_note" rows="2">${order.note||''}</textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveOrder()">💾 更新訂單</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveOrder()">更新訂單</button>`);
   // Pre-fill items
   (order.items||[]).forEach(item=>{
     const rowId=S.orderItemCount++;
@@ -2963,7 +2979,7 @@ function renderArrivalsTable(){
       <td style="text-align:center;">${a.pdfFile?`<button class="btn btn-blue btn-xs" onclick="viewArrivalPdf('${a.id}')" title="${a.pdfName||'貨單.pdf'}">📄 查看</button>`:'<span style="font-size:13px;color:var(--text3);">—</span>'}</td>
       <td style="max-width:120px;font-size:13px;color:var(--text3);">${a.note||'-'}</td>
       <td style="white-space:nowrap;">
-        <button class="btn btn-outline btn-xs" onclick="editArrival('${a.id}')">✏️ 編輯</button>
+        <button class="btn btn-outline btn-xs" onclick="editArrival('${a.id}')">編輯</button>
         <button class="btn btn-red btn-xs" onclick="deleteArrival('${a.id}')">刪</button>
       </td>
     </tr>`;
@@ -2988,7 +3004,7 @@ function renderItemsMgmt(){
   const rows=items.map(i=>{
     const thumb=i.photo
       ? `<img src="${i.photo}" style="width:36px;height:36px;border-radius:4px;object-fit:cover;border:1px solid var(--gray-border);cursor:pointer;" onclick="viewPhoto('${i.photo}','${(i.name||'').replace(/'/g,"\\'")}')">`
-      : `<div style="width:36px;height:36px;border-radius:4px;background:#F3F4F6;display:flex;align-items:center;justify-content:center;font-size:17px;">📦</div>`;
+      : `<div class="item-slot item-slot-sm">${pxSvg('inventory',2)}</div>`;
     return `<tr>
       <td>${thumb}</td>
       <td style="font-weight:600;">${i.name}</td>
@@ -2999,7 +3015,7 @@ function renderItemsMgmt(){
       <td>${i.minStock||0}</td>
       <td>${fN(i.avgUnitPrice)}</td>
       <td>${i.vendor||'-'}</td>
-      <td><button class="btn btn-outline btn-xs" onclick="openEditItem('${i.id}')">編輯</button><button class="btn btn-purple btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製到另一間診所">📋 複製</button><button class="btn btn-red btn-xs" onclick="deleteItem('${i.id}')">刪</button></td>
+      <td><button class="btn btn-outline btn-xs" onclick="openEditItem('${i.id}')">編輯</button><button class="btn btn-purple btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製到另一間診所">複製</button><button class="btn btn-red btn-xs" onclick="deleteItem('${i.id}')">刪</button></td>
     </tr>`;
   }).join('');
   document.getElementById('itemsMgmtTable').innerHTML=`<table>
@@ -3133,7 +3149,7 @@ function renderVendorPage(){
     <td>${p.status==='paid'?'<span class="badge badge-green">已請款</span>':'<span class="badge badge-red">未請款</span>'}</td>
     <td onclick="event.stopPropagation()" style="white-space:nowrap;">
       ${p.status==='unpaid'?`<button class="btn btn-green btn-xs" onclick="markVPaid('${p.id}')">標記請款</button>`:''}
-      <button class="btn btn-outline btn-xs" onclick="editVendorPayment('${p.id}')">✏️ 編輯</button>
+      <button class="btn btn-outline btn-xs" onclick="editVendorPayment('${p.id}')">編輯</button>
       ${p.pdfUrl?`<a href="${p.pdfUrl}" target="_blank" class="btn btn-outline btn-xs" onclick="event.stopPropagation()">📄 PDF</a>`:''}
       <button class="btn btn-red btn-xs" onclick="deleteVP('${p.id}')">刪</button>
     </td>
@@ -3173,7 +3189,7 @@ function showVendorDetail(id){
         <div style="text-align:right;">
           ${p.accountInfo
             ? `<div style="font-size:15px;font-weight:700;font-family:monospace;background:#EBF2FD;padding:6px 10px;border-radius:4px;letter-spacing:.5px;white-space:nowrap;overflow-wrap:normal;">${p.accountInfo}</div>
-               <button onclick="navigator.clipboard.writeText('${p.accountInfo}').then(()=>notify('✅ 已複製帳號'))" class="btn btn-outline btn-xs" style="margin-top:5px;">📋 複製帳號</button>`
+               <button onclick="navigator.clipboard.writeText('${p.accountInfo}').then(()=>notify('✅ 已複製帳號'))" class="btn btn-outline btn-xs" style="margin-top:5px;">複製帳號</button>`
             : '<span style="font-size:14px;color:var(--text3);">尚未填寫</span>'}
         </div>
       </div>
@@ -3181,8 +3197,8 @@ function showVendorDetail(id){
     ${p.pdfUrl?`<div style="background:#F8FAFC;border-radius:5px;padding:12px;margin-bottom:14px;display:flex;align-items:center;justify-content:space-between;"><span style="font-size:14px;color:var(--text2);">📄 出貨單 PDF</span><a href="${p.pdfUrl}" target="_blank" class="btn btn-blue btn-sm">開啟 PDF</a></div>`:''}
     ${p.note?`<div style="font-size:14px;color:var(--text3);background:#F8FAFC;border-radius:4px;padding:10px;">📝 備註：${p.note}</div>`:''}
   `,`
-    ${p.status==='unpaid'?`<button class="btn btn-green" onclick="markVPaid('${p.id}');closeModal();">✅ 標記為已請款</button>`:''}
-    <button class="btn btn-outline" onclick="editVendorPayment('${p.id}')">✏️ 編輯</button>
+    ${p.status==='unpaid'?`<button class="btn btn-green" onclick="markVPaid('${p.id}');closeModal();">標記為已請款</button>`:''}
+    <button class="btn btn-outline" onclick="editVendorPayment('${p.id}')">編輯</button>
     <button class="btn btn-outline" onclick="closeModal()">關閉</button>
   `);
   document.getElementById('modalBg').classList.add('open');
@@ -3206,7 +3222,7 @@ function editVendorPayment(id){
     </div>
     <div class="fg"><label class="fl">出貨單 PDF 連結</label><input class="fi" type="url" id="vp_pdf" value="${p.pdfUrl||''}" placeholder="https://..."></div>
     <div class="fg"><label class="fl">備註</label><textarea class="fta" id="vp_note" rows="2">${p.note||''}</textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveVP()">💾 更新</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveVP()">更新</button>`);
   document.getElementById('modalBg').classList.add('open');
 }
 
@@ -3346,7 +3362,7 @@ function renderDoctorSettings(){
     <div style="display:flex;align-items:center;gap:10px;padding:10px;background:#F8FAFC;border-radius:4px;margin-bottom:6px;">
       <div class="dr-avatar">${d[0]}</div>
       <span style="flex:1;font-size:14px;font-weight:500;">${d}醫師</span>
-      <button class="btn btn-outline btn-xs" onclick="editDoctorName(${i})">✏️ 改名</button>
+      <button class="btn btn-outline btn-xs" onclick="editDoctorName(${i})">改名</button>
       <button class="btn btn-red btn-xs" onclick="deleteDoctor(${i})">刪除</button>
     </div>`).join(''):
     '<div class="empty" style="padding:20px;"><div>尚無醫師，請新增</div></div>';
@@ -3387,7 +3403,7 @@ function renderLabSettings(){
     <div style="display:flex;align-items:center;gap:10px;padding:10px;background:#F8FAFC;border-radius:4px;margin-bottom:6px;">
       <div class="ni-icon" style="background:#F3EEFF;">🔧</div>
       <span style="flex:1;font-size:14px;font-weight:500;">${l}</span>
-      <button class="btn btn-outline btn-xs" onclick="editLab(${i})">✏️ 改名</button>
+      <button class="btn btn-outline btn-xs" onclick="editLab(${i})">改名</button>
       <button class="btn btn-red btn-xs" onclick="deleteLab2(${i})">刪除</button>
     </div>`).join(''):
     '<div class="empty" style="padding:20px;"><div>尚無技工所</div></div>';
@@ -3418,7 +3434,7 @@ function renderUserSettings(){
         <div style="font-size:14px;font-weight:600;">${u.name}</div>
         <div style="font-size:13px;color:var(--text3);">${ROLES[u.role]||u.role} · PIN: ${'•'.repeat(u.pin?.length||4)}</div>
       </div>
-      <button class="btn btn-outline btn-xs" onclick="editUser('${u.id}')">✏️ 編輯</button>
+      <button class="btn btn-outline btn-xs" onclick="editUser('${u.id}')">編輯</button>
       ${u.id!=='u1'?`<button class="btn btn-red btn-xs" onclick="deleteUser('${u.id}')">刪除</button>`:''}
     </div>`).join('');
   const cui=document.getElementById('currentUserInfo');
@@ -3427,7 +3443,7 @@ function renderUserSettings(){
     cui.innerHTML=`<div style="display:flex;align-items:center;gap:10px;padding:10px;background:#EBF2FD;border-radius:4px;">
       <div class="user-avatar">${u.avatar||u.name[0]}</div>
       <div><div style="font-size:14px;font-weight:600;">${u.name}</div><div style="font-size:13px;color:var(--blue);">${ROLES[u.role]||u.role}</div></div>
-      <button class="btn btn-outline btn-sm" style="margin-left:auto;" onclick="switchUser()">🔄 切換帳號</button>
+      <button class="btn btn-outline btn-sm" style="margin-left:auto;" onclick="switchUser()">切換帳號</button>
     </div>`;
   }
 }
@@ -3584,8 +3600,8 @@ function exportData(){
     </div>
   `,`
     <button class="btn btn-outline" onclick="closeModal()">關閉</button>
-    <button class="btn btn-blue" onclick="copyBackupText()">📋 複製全部</button>
-    ${downloadOk?'':`<button class="btn btn-blue" onclick="exportData()">🔄 重試下載</button>`}
+    <button class="btn btn-blue" onclick="copyBackupText()">複製全部</button>
+    ${downloadOk?'':`<button class="btn btn-blue" onclick="exportData()">重試下載</button>`}
   `);
   document.getElementById('modalBg').classList.add('open');
 }
@@ -3815,7 +3831,7 @@ function closeBgModal(e){if(e.target===document.getElementById('modalBg'))closeM
 
 function setModal(title,body,footer){
   document.querySelector('#modalBg .modal')?.classList.remove('modal-sm');
-  document.getElementById('modalTitle').textContent=title;
+  document.getElementById('modalTitle').textContent=String(title).replace(/^[\p{Extended_Pictographic}\uFE0F\u200D]+\s*/u,'');
   document.getElementById('modalBody').innerHTML=body;
   document.getElementById('modalFt').innerHTML=footer;
 }
@@ -3836,7 +3852,7 @@ function buildRevModal(){
     <div class="sec-divider">技工費</div>
     <div id="labRows2"></div><button class="btn btn-outline btn-sm" onclick="addLabRow2()" style="margin-bottom:12px;">＋ 新增技工費</button>
     <div class="fg"><label class="fl">備註</label><textarea class="fta" id="rv_note" rows="2"></textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveRevenue()">💾 儲存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveRevenue()">儲存</button>`);
   addDrRow();
 }
 
@@ -3905,7 +3921,7 @@ function buildOrderModal(preItemId=null){
     <button class="btn btn-outline btn-sm" style="margin-bottom:12px;" onclick="addOrderItemRow()">＋ 新增品項</button>
     <div class="form-row"><div class="fg"><label class="fl">優惠方案</label><input class="fi" type="text" id="ord_promo" placeholder="例：買5送1"></div><div class="fg"><label class="fl">贈品</label><input class="fi" type="text" id="ord_gift" placeholder="例：贈品說明"></div></div>
     <div class="fg"><label class="fl">備註</label><textarea class="fta" id="ord_note" rows="2"></textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveOrder()">💾 儲存訂單</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveOrder()">儲存訂單</button>`);
   addOrderItemRow(preItemId);
 }
 
@@ -4005,7 +4021,7 @@ function buildArrivalModal(orderId=null){
       <div style="font-size:12px;color:var(--text3);margin-top:4px;">上傳貨單可永久保存於此筆紀錄，查閱時即可預覽（單檔 ≤ 5MB）</div>
     </div>
     <div class="fg" style="margin-top:8px;"><label class="fl">備註</label><textarea class="fta" id="arr_note" rows="2"></textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveArrival()">✅ 確認到貨並更新庫存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveArrival()">確認到貨並更新庫存</button>`);
 
   if(orderId){
     setTimeout(()=>{
@@ -4136,7 +4152,7 @@ function editArrival(id){
       <div style="font-size:12px;color:var(--text3);margin-top:4px;">${rec.pdfFile?'上傳新檔將覆蓋舊貨單':'上傳新貨單（≤ 5MB）'}</div>
     </div>
     <div class="fg" style="margin-top:8px;"><label class="fl">備註</label><textarea class="fta" id="arr_note" rows="2">${rec.note||''}</textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveArrivalEdit('${id}')">💾 更新到貨記錄</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveArrivalEdit('${id}')">更新到貨記錄</button>`);
   // Pre-fill items
   (rec.items||[]).forEach(item=>{
     const rowId=S.arrItemCount++;
@@ -4270,7 +4286,7 @@ function buildItemModal(editId=null){
       <div id="it_photo_preview" data-photo="${item?.photo||''}" style="margin-top:8px;">${photoPreview}</div>
       <div style="font-size:12px;color:var(--text3);margin-top:4px;">支援 JPG/PNG，自動壓縮至約 200KB</div>
     </div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveItem('${editId||''}')">💾 儲存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveItem('${editId||''}')">儲存</button>`);
 }
 
 function copyItemTemplate(){
@@ -4390,7 +4406,7 @@ function buildVendorModal(){
     <div class="fg"><label class="fl">廠商匯款帳號</label><input class="fi" type="text" id="vp_account" placeholder="銀行/帳號"></div>
     <div class="fg"><label class="fl">出貨單 PDF 連結</label><input class="fi" type="url" id="vp_pdf" placeholder="https://..."></div>
     <div class="fg"><label class="fl">備註</label><textarea class="fta" id="vp_note" rows="2"></textarea></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveVP()">💾 儲存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveVP()">儲存</button>`);
 }
 function saveVP(){
   const data={clinic:document.getElementById('vp_clinic').value,vendor:document.getElementById('vp_vendor').value,invoiceDate:document.getElementById('vp_invoice').value,month:document.getElementById('vp_month').value,amount:+document.getElementById('vp_amount').value||0,items:document.getElementById('vp_items').value,paymentMethod:document.getElementById('vp_method').value,status:document.getElementById('vp_status').value,accountInfo:document.getElementById('vp_account').value,pdfUrl:document.getElementById('vp_pdf').value,note:document.getElementById('vp_note').value};
@@ -4413,7 +4429,7 @@ function buildEmpModal(){
     <div class="form-row"><div class="fg"><label class="fl">月薪 NT$</label><input class="fi" type="number" id="emp_monthly" placeholder="0"></div><div class="fg"><label class="fl">時薪 NT$</label><input class="fi" type="number" id="emp_hourly" placeholder="0"></div></div>
     <div class="form-row"><div class="fg"><label class="fl">到職日期</label><input class="fi" type="date" id="emp_join"></div><div class="fg"><label class="fl">已用特休（天）</label><input class="fi" type="number" id="emp_leave" value="0"></div></div>
     <div class="fg"><label class="fl">備註</label><input class="fi" type="text" id="emp_note" placeholder="備註"></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveEmp()">💾 儲存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveEmp()">儲存</button>`);
 }
 function saveEmp(){
   const emp={id:uid(),name:document.getElementById('emp_name').value.trim(),type:document.getElementById('emp_type').value,monthly:+document.getElementById('emp_monthly').value||0,hourly:+document.getElementById('emp_hourly').value||0,joinDate:document.getElementById('emp_join').value,leaveUsed:+document.getElementById('emp_leave').value||0,note:document.getElementById('emp_note').value};
@@ -4430,7 +4446,7 @@ function buildExpenseModal(){
     <div class="form-row"><div class="fg"><label class="fl">類別</label><select class="fs" id="ex_cat">${expCats}</select></div><div class="fg"><label class="fl">金額 NT$</label><input class="fi" type="number" id="ex_amount" placeholder="0"></div></div>
     <div class="fg"><label class="fl">說明</label><input class="fi" type="text" id="ex_desc" placeholder="支出說明"></div>
     <div class="fg"><label class="fl">備註</label><input class="fi" type="text" id="ex_note" placeholder="備註"></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveExp()">💾 儲存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveExp()">儲存</button>`);
 }
 function saveExp(){
   const rec={id:uid(),clinic:document.getElementById('ex_clinic').value,date:document.getElementById('ex_date').value,category:document.getElementById('ex_cat').value,amount:+document.getElementById('ex_amount').value||0,description:document.getElementById('ex_desc').value,note:document.getElementById('ex_note').value};
@@ -4447,7 +4463,7 @@ function buildLabFeeModal(){
     <div class="form-row"><div class="fg"><label class="fl">技工所</label><select class="fs" id="lf_lab">${labOpts}</select></div><div class="fg"><label class="fl">醫師</label><select class="fs" id="lf_dr">${drOpts}</select></div></div>
     <div class="fg"><label class="fl">金額 NT$</label><input class="fi" type="number" id="lf_amount" placeholder="0"></div>
     <div class="fg"><label class="fl">備註</label><input class="fi" type="text" id="lf_note" placeholder="備註"></div>
-  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveLab()">💾 儲存</button>`);
+  `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveLab()">儲存</button>`);
 }
 function saveLab(){
   const rec={id:uid(),clinic:document.getElementById('lf_clinic').value,date:document.getElementById('lf_date').value,lab:document.getElementById('lf_lab').value,doctor:document.getElementById('lf_dr').value,amount:+document.getElementById('lf_amount').value||0,note:document.getElementById('lf_note').value};
@@ -4835,8 +4851,8 @@ function showSyncSetup(){
     </div>
   `,`
     <button class="btn btn-outline" onclick="closeLoginModal()">取消</button>
-    ${cfg.binId?`<button class="btn btn-outline" onclick="testCloudConnection()">🔌 測試連線</button>`:''}
-    <button class="btn btn-blue" onclick="saveSyncSetup()">💾 儲存設定</button>
+    ${cfg.binId?`<button class="btn btn-outline" onclick="testCloudConnection()">測試連線</button>`:''}
+    <button class="btn btn-blue" onclick="saveSyncSetup()">儲存設定</button>
   `);
   document.getElementById('modalBg').classList.add('open');
 }
