@@ -83,7 +83,7 @@ body{
 .modal-hd::before,
 .notif-dd-hd::before,
 .sidebar-logo::before{
-  content:'';position:absolute;left:10px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;
+  content:'';position:absolute;left:10px;top:18px;width:16px;height:16px;margin-top:-8px;border-radius:50%;
   background:linear-gradient(#fff,#fff) center/8px 2px no-repeat,radial-gradient(circle at 35% 30%,#dce8ff 0,#7fa0dc 45%,#3f60a8 100%);
   border:1px solid #2f4a82;box-shadow:0 1px 0 rgba(255,255,255,.7);
 }
@@ -97,6 +97,8 @@ body{
   display:flex;flex-direction:column;
   position:fixed;left:0;top:0;bottom:0;z-index:50;overflow-y:auto;
 }
+.sidebar-logo::before{top:31px!important;}
+.modal-hd::before{top:20px!important;}
 .sidebar-logo{position:relative;padding:10px 12px 10px 34px;background:var(--ro-title);border-bottom:1px solid #6d7ea6;box-shadow:inset 0 1px 0 rgba(255,255,255,.85);}
 .logo-mark{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:40px;height:40px;border-radius:6px;background:var(--ro-iconbox);border:2px solid #8da3c9;box-shadow:inset 0 0 0 1px #16204a;display:flex;align-items:center;justify-content:center;}
@@ -462,6 +464,22 @@ a.btn{text-decoration:none;}
   .form-row:has(>.btn),.form-row-3:has(>.btn){grid-template-columns:1fr;}
   .form-row>.btn,.form-row-3>.btn{grid-column:1/-1;justify-self:end;}
   .tab-panel>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important;}
+  /* 資料表 → 卡片（每列一張，左邊欄位名稱、右邊數值） */
+  .tbl-wrap{overflow:visible;background:transparent;border:none;box-shadow:none;border-radius:0;}
+  .tbl-wrap table{min-width:0;}
+  .tbl-wrap thead{display:none;}
+  .tbl-wrap table,.tbl-wrap tbody,.tbl-wrap tr,.tbl-wrap td{display:block;width:100%;}
+  .tbl-wrap tbody tr{background:linear-gradient(180deg,#fff 0%,#fff 70%,#eef4fc 100%);border:1px solid #afbfdb;border-radius:5px;margin-bottom:8px;padding:2px 10px;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(29,39,73,.14);}
+  .tbl-wrap tbody tr>td,.tbl-wrap tbody tr:nth-child(even)>td,.tbl-wrap tbody tr:hover>td{background:transparent!important;}
+  .tbl-wrap td{padding:8px 0!important;border-bottom:1px dotted #cdd6e6;text-align:right!important;white-space:normal!important;overflow:hidden;min-height:38px;max-width:none!important;}
+  .tbl-wrap td:last-child{border-bottom:none;}
+  .tbl-wrap td::before{content:attr(data-label);float:left;margin-right:12px;max-width:45%;text-align:left;font-size:13px;font-weight:800;color:var(--ro-ink2);line-height:1.6;}
+  .tbl-wrap td[data-label=""]::before,.tbl-wrap tr.tr-full>td::before{display:none;}
+  .tbl-wrap tr.tr-full>td{text-align:center!important;}
+  .tbl-wrap td>div,.tbl-wrap td>span{max-width:none!important;}
+  .tbl-wrap td>div[style*="display:flex"],.tbl-wrap td>div[style*="display: flex"]{justify-content:flex-end;}
+  .tbl-wrap td.td-act .btn{margin:2px 0 2px 4px;}
+  .tbl-wrap td:first-child{font-size:15px;font-weight:800;}
   .modal-bg{padding:0;align-items:flex-end;}
   .modal{max-width:100%;max-height:94vh;border-radius:8px 8px 0 0;}
   .modal-body{padding:14px 12px;}
@@ -1269,14 +1287,21 @@ a.btn{text-decoration:none;}
 // 每個圖示為 16×16 字元圖，字元對應 PX_PAL 色票（'.' = 透明）
 const PX_PAL={k:'#2a2433',w:'#ffffff',l:'#dfe3ec',g:'#a3abbd',G:'#626b80',y:'#ffe066',Y:'#e8a92a',o:'#ff9a3c',O:'#c4661f',b:'#9a6538',B:'#5e3b1f',m:'#fff3c9',r:'#ef4b43',R:'#a82d2d',p:'#ff9cc4',P:'#e2548f',c:'#9fdcff',C:'#4a8fe6',n:'#2c4c9c',e:'#94e27d',E:'#3aa64a',v:'#c3a0f5',V:'#7c52c6',s:'#ffdcbd',S:'#e3a57a',t:'#6fd6cc',T:'#2a9c96'};
 const PX={
+  bell:["................",".......kk.......",".....kkyYkk.....","....kywyyYYk....","...kywwyyyYOk...","...kywyyyyYOk...","...kywyyyyYOk...","...kywyyyyYOk...","...kyyyyyyYOk...","..kyyyyyyyyYOk..",".kyyyyyyyyyYYOk.",".kYYYYYYYYYOOOk.","..kkkkkYOkkkkk..",".......kk.......","................","................"],
+  calendar:["................","...kgk....kgk...",".kkkgkkkkkkgkkk.",".kprkrrrrrrkrRk.",".kprrrrrrrrrrRk.",".kRRRRRRRRRRRRk.",".kwwwwwwwwwwwlk.",".kwggwwggwwgglk.",".kwggwwggwwgglk.",".kwwwwwwwwwwwlk.",".kwggwwrrwwgglk.",".kwggwwrrwwgglk.",".kwwwwwwwwwwwlk.",".kllllllllllllk.",".kkkkkkkkkkkkkk.","................"],
   cashbook:["................","............kk..","...........kwck.","..........kwcCk.","..........kwcCk.","...kkkk..kkwCk..","..kwwwwkkwkcCk..","..kwgggllgkkwk..","..kwwwwllwkwwk..","..kwgggllkggwk..","..kwwwwllkwwwk..","..kwgggllgggwk..",".kbkkkkllkkkkbk.",".kbbbbbkkbbbbBk.","..kkkkkkkkkkkk..","................"],
+  cloud:["................","................",".......kkkk.....","......kwwwwk....",".....kwwwwwwk...","..kk.kwnnnwnwk..",".kwwkwnwwwnnwwk.",".kwwwnwwwnnnwwk.",".kwwwnwwwwwwwck.",".kwwwnwwwwwnwck.",".kcwwwnwwwnwcck.","..kccwwnnnwcck..","...kkkkkkkkkk...","................","................","................"],
   expenses:["................","...kk.kk.kk.....","..kSSkbbkbBk....","...kkSbbBkk.....","....krrrRk......","...kSbbbbBk.....","..kSSBbbBbBk....",".kSSBbbbbBbBk...",".kSbbbbbbbkkk...",".kSbbbbbbkwyyk..",".kSbbbbbkyyyYYk.",".kbbbbbbkyyYYOk.",".kbbbbbBkyYYOOk.","..kbbbBBBkYOOk..","...kkkkkkkkkk...","................"],
   home:["................",".......kk.kkk...","......kprkkgk...",".....kprrRkgk...","....kprrrrRkk...","...kprrrrrrRk...","..kprrrrrrrrRk..",".kRRRRRRRRRRRRk.",".kkmmmmmmmmmSkk.","..kBBBBmmkkmSk..","..kBwcBmkbBkSk..","..kBcCBmkbBkSk..","..kBBBBmkbykSk..","..kSSSSSkbBkSk..","..kkkkkkkkkkkk..","................"],
   hr:["................",".........kkk....","........kbbbk...",".......kbbbbbk..","....kkkkbsssbk..","...kBBBkskskSk..","..kbBBBBksssk...","..kBsssBkkkkkk..","..kskskSkwswpPk.","..kssssSkpwppPk.","...kkkkkkppppPk.","..kcwswCkpppPPk.",".kcCCwCCnkppPPk.",".kcCCCCCnkpPPPk.",".kkkkkkkkkkkkkk.","................"],
+  info:["................",".....kkkkkk.....","...kkccccCCkk...","..kcccCwwCCCnk..","..kccCCwwCCCnk..",".kcCCCCCCCCCCnk.",".kcCCCwwwCCCCnk.",".kcCCCCwwCCCCnk.",".kCCCCCwwCCCCnk.",".kCCCCCwwCCCCnk.",".kCCCCCwwCCCnnk.","..kCCCwwwwCnnk..","..kCCCCCCCCnnk..","...kkCCnnnnkk...",".....kkkkkk.....","................"],
   inventory:["................","................","..kkkkkkkkkkkk..",".kllOOOOOOOOgGk.",".klbbbbkkbbbbGk.",".kBBBBkyYkBBBBk.",".kkkkkkyYkkkkkk.",".kOOOOkkkkOOOOk.",".kbbbbbbbbbbbBk.",".kbbbbbbbbbbbBk.",".kBBBBBBBBBBBBk.",".kOOOOOOOOOOOBk.",".klbbbbbbbbbbGk.",".kllbbbbbbbbgGk.",".kkkkkkkkkkkkkk.","................"],
   labfees:["................","...kkkk..kkkk...","..kwyyYkkwyYYk..",".kyyyYYYyYYYYOk.",".kYYYYYYYYYOOOk.",".kkkkkkkkkkkkkk.",".kwwwwwwwwwwlgk.",".kwwwwwwwwwwlgk.","..kwwwwwwwwlgk..","..kwwwwwwwllgk..","..kwwwwkkwllgk..","..kwwlk..kwlgk..","..kwlk....klgk..","..kwlk....klgk..","...kk......kk...","................"],
+  lock:["................",".....kkkkkk.....","....kwllllgk....","...kwlkkkkgGk...","...kwlk..kgGk...","...kllk..kgGk...","..kkkkkkkkkkkk..","..kwyyyyyyyYOk..","..kyyyyyyyyYOk..","..kyyyykkyyYOk..","..kyyyykkyyYOk..","..kyyyykkYYYOk..","..kYYYYYYYYOOk..","..kkkkkkkkkkkk..","................","................"],
   reports:["................","..kkkkkkkkk.....","..kwwwwwwwkk....","..kwggggwwklk...","..kwwwwwwwkkkk..","..kwwwwwwwwwlk..","..kwwwwwwwCnlk..","..kwwwwYOwCnlk..","..kwwwwYOwCnlk..","..kwrRwYOwCnlk..","..kwrRwYOwCnlk..","..kwrRwYOwCnlk..","..kwGGGGGGGGlk..","..kllllllllllk..","..kkkkkkkkkkkk..","................"],
   revenue:["................","...Y...kkkkkk...","..YwY.kywwyyyk..","...Y..kYyyyyYk..","......kyYYYYOk..","......kOOOOOOk..","..kkkkkkYYYYOk..",".kywwyyykOOOOk..",".kYyyyyYkYYYOk..",".kyYYYYOkOOOOk..",".kOOOOOOkYYYOk..",".kyYYYYOkOOOOk..",".kOOOOOOkYYYOk..",".kyYYYYOkkkkk...","..kkkkkk........","................"],
+  save:["................",".kkkkkkkkkkkk...",".kcCkwlGGgkCCk..",".kcCkllGGgkCCnk.",".kcCkllllgkCCnk.",".kcCkkkkkkkCCnk.",".kcCCCCCCCCCCnk.",".kckkkkkkkkkknk.",".kckwwwwwwwwknk.",".kckwggggggwknk.",".kckwwwwwwwwknk.",".kckwggggggwknk.",".kckwwwwwwwwknk.",".kckllllllllknk.",".kkkkkkkkkkkkkk.","................"],
+  search:["................","....kkkkk.......","...kllllgk......","..klwccccgk.....",".klwccccccgk....",".klwccccccGk....",".klcccccccGk....",".kgccccccCGk....",".kgcccccCCGk....","..kgcCCCCGkk....","...kGGGGGkYOk...","....kkkkkObbkk..",".........kkBbbk.","...........kBBk.","............kk..","................"],
   settings:["................","......kkkk......","..kk..kwlk..kk..","..kwkkwwllkklk..","...kwwllllllk...","...kwllkkllgk...",".kkwllk..klggkk.",".kwllk....kgggk.",".klllk....kggGk.",".kklllk..kggGkk.","...kllgkkggGk...","...klggggggGk...","..kgkkggGGkkGk..","..kk..kgGk..kk..","......kkkk......","................"],
   vendor:["................","..........kkk...",".........kmSSk..","........kmwSbSk.",".......kmwmmSSk.","......kmwmmmSSk.",".....krwmmmSSk..","....kmrrmmkkk...","...kmwmrRkprrk..","..kmwmmmkprrrrk.",".kmwmmmSkrrRrRk.",".kwmmmSSkrrrRRk.",".kmmmSSk.krRRk..","..kSSSk...kkk...","...kkk..........","................"]
 };
@@ -1308,10 +1333,23 @@ function pxHydrate(root=document){
 // 頁面標題加上對應圖示、並把靜態標記裡的像素圖示畫出來
 const PAGE_PX={dashboard:'home',cashbook:'cashbook',revenue:'revenue',inventory:'inventory',vendor:'vendor',hr:'hr',expenses:'expenses',labfees:'labfees',reports:'reports',settings:'settings'};
 // 表格中的短內容（日期、金額、名稱）不斷行，長描述仍可換行
+// 並替資料表每格標上欄位名稱（手機版把每列改成卡片時顯示）
 function roTableNowrap(root){
   root.querySelectorAll('td').forEach(td=>{
     const t=td.textContent.trim();
     td.classList.toggle('nw',t.length>0&&t.length<=12&&!td.querySelector('button,input,select,textarea,.btn'));
+  });
+  root.querySelectorAll('.tbl-wrap table').forEach(tb=>{
+    const heads=[...tb.querySelectorAll('thead th')].map(th=>th.textContent.trim());
+    tb.querySelectorAll('tbody tr').forEach(tr=>{
+      const cells=[...tr.children];
+      tr.classList.toggle('tr-full',cells.length===1);
+      cells.forEach((td,i)=>{
+        const lab=heads[i]||'';
+        if(td.dataset.label!==lab) td.dataset.label=lab;
+        td.classList.toggle('td-act',!!td.querySelector('button,.btn')&&td.textContent.trim().length<30);
+      });
+    });
   });
 }
 function roDecorate(){
