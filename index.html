@@ -36,7 +36,7 @@
   --blue:#3462c4;--blue-d:#264c9e;--blue-l:#e2ebfb;--blue-ll:#f1f6fe;
   --purple:#8a4fc0;--purple-d:#6d3aa3;--purple-l:#f2eafc;
   --green:#23884f;--green-l:#e3f5ea;
-  --orange:#c77a0e;--orange-l:#fff3db;
+  --orange:#9a5b00;--orange-l:#fff3db;
   --red:#cf3b3b;--red-l:#fde8e8;
   --teal:#1f8f95;--teal-l:#e0f5f5;
   --gray:#56617f;--gray-l:#f1f4f9;--gray-border:#c3cde0;
@@ -472,6 +472,31 @@ a.btn{text-decoration:none;}
   .clinic-tabs{order:10;width:100%;}
 }
 
+/* 表格與對話視窗（QA 第二批） */
+.tbl-wrap thead th,.tbl-wrap tbody td{padding:9px 8px;}
+.tbl-wrap td.td-act{white-space:nowrap;}
+.tbl-wrap td .btn-xs+.btn-xs{margin-left:4px;}
+.btn-purple{background:linear-gradient(180deg,#fff 0%,#f1e8fb 55%,#e2d2f5 100%);color:#5b2d8c;border:1px solid #7a4fae;}
+.btn-purple:hover{background:linear-gradient(180deg,#fff 0%,#eadcfa 55%,#d6c1f0 100%);border-color:#5b2d8c;}
+.modal-ft:empty{display:none;}
+.modal-body [style*="background:#F8FAFC"]{background:#fff!important;border:1px solid var(--ro-frame-l);border-radius:4px!important;box-shadow:inset 0 1px 2px rgba(29,39,73,.08);}
+.modal-body [style*="#F3F4F6"]{border-bottom-color:#c9d3e4!important;border-bottom-style:dotted!important;}
+.arrival-item-row>div:first-child{font-size:14px;font-weight:800;color:var(--ro-indigo);}
+input[type=file]{font-size:14px;max-width:100%;}
+input[type=file]::file-selector-button{padding:5px 12px;margin-right:10px;min-height:32px;border:1px solid #5f6878;border-radius:4px;background:var(--ro-btn);font:inherit;font-weight:800;color:var(--ro-ink);box-shadow:inset 0 1px 0 #fff;cursor:pointer;}
+input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
+@media(min-width:769px){
+  .win-hd::before{top:50%;}
+  .tbl-wrap table.has-act thead th:last-child,.tbl-wrap table.has-act tbody td:last-child{position:sticky;right:0;z-index:1;box-shadow:inset 1px 0 0 #c3cde0;}
+  .tbl-wrap table.has-act tbody tr>td:last-child{background:#fff;}
+  .tbl-wrap table.has-act tbody tr:nth-child(even)>td:last-child{background:#f7f9fd;}
+  .tbl-wrap table.has-act tbody tr:hover>td:last-child{background:#e9f0fc;}
+  #stockTable td:first-child{min-width:170px;}
+  #stockTable .stock-bar-wrap{width:64px;}
+  #stockTable td:nth-child(2){white-space:normal;min-width:112px;max-width:132px;}
+  #stockTable td:nth-child(2) .badge{white-space:normal;}
+}
+
 /* 鍵盤操作時的焦點框 */
 .btn:focus-visible,.ctab:focus-visible,.chart-tab:focus-visible,.page-tab:focus-visible,.notif-btn:focus-visible,.mobile-menu-btn:focus-visible,.section-hd-link:focus-visible,.modal-close:focus-visible{outline:2px solid #ffb400;outline-offset:1px;}
 
@@ -544,6 +569,27 @@ a.btn{text-decoration:none;}
   .os-chip{min-height:34px;font-size:14px;padding:4px 12px;}
   #page-cashbook th .btn-xs{min-height:32px;}
   #cb_expense_rows .cb-x{min-width:36px;min-height:36px;}
+  /* QA 第二批：分頁、表格卡片、對話視窗 */
+  .page-tabs{padding:0;gap:2px;overflow:visible;}
+  .page-tab{flex:1 1 0;min-width:0;padding:8px 2px 7px;text-align:center;font-size:13px;white-space:normal;line-height:1.3;}
+  .tbl-wrap .btn-xs,.modal-body .btn-xs{min-height:36px;padding:4px 12px;font-size:14px;}
+  .tbl-wrap td.td-act{white-space:normal!important;}
+  .tbl-wrap td.td-act .btn{margin:3px 0 3px 8px!important;}
+  .tbl-wrap td.td-act::before{line-height:42px;}
+  .tbl-wrap td.td-empty{display:none;}
+  .tbl-wrap td[data-label="照片"]{display:none;}
+  .tbl-wrap td[data-label="品項明細"]::before{float:none;display:block;max-width:none;margin:0 0 2px;}
+  .tbl-wrap td>div[style*="white-space:nowrap"]{white-space:normal!important;flex-wrap:wrap;row-gap:2px;}
+  #revTable td:nth-child(4),#revTable td:nth-child(5),#revTable td:nth-child(6){display:none;}
+  .form-row,.form-row-3,.form-row-4{row-gap:0;}
+  #drRows .form-row,#cardRows .form-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);}
+  #drRows .form-row:has(>.btn),#cardRows .form-row:has(>.btn){grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;}
+  #drRows .form-row>.btn,#cardRows .form-row>.btn{grid-column:auto;justify-self:auto;}
+  .modal .form-row-3{grid-template-columns:repeat(3,minmax(0,1fr));}
+  .modal .form-row-3:has(>.btn){grid-template-columns:1fr;}
+  #orderItemRows>div{position:relative;padding-top:40px!important;}
+  #orderItemRows .form-row>.btn{position:absolute;top:6px;right:6px;margin:0!important;min-height:32px;}
+  #orderItemRows .form-row-4>.fg:first-child{grid-column:1/-1;}
   /* 資料表 → 卡片（每列一張，左邊欄位名稱、右邊數值） */
   .tbl-wrap{overflow:visible;background:transparent;border:none;box-shadow:none;border-radius:0;}
   .tbl-wrap table{min-width:0;}
@@ -1129,7 +1175,7 @@ a.btn{text-decoration:none;}
       <!-- Orders -->
       <div class="tab-panel" id="tab-invOrders">
         <div class="card">
-          <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;align-items:center;">
+          <div class="win-hd"><div class="card-title">進貨訂購紀錄</div><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
             <select class="fs" style="width:auto;padding:5px 10px;font-size:13px;" id="orderStatusFilter" onchange="renderOrdersTable()">
               <option value="">全部狀態</option>
               <option value="ordered">待到貨</option>
@@ -1137,7 +1183,7 @@ a.btn{text-decoration:none;}
               <option value="arrived">已完成</option>
             </select>
             <input type="month" class="fi" style="width:auto;padding:5px 10px;font-size:13px;" id="orderMonthFilter" onchange="renderOrdersTable()">
-          </div>
+          </div></div>
           <div class="tbl-wrap" id="ordersTable"></div>
         </div>
       </div>
@@ -1145,9 +1191,9 @@ a.btn{text-decoration:none;}
       <!-- Arrivals -->
       <div class="tab-panel" id="tab-invArrivals">
         <div class="card">
-          <div style="display:flex;gap:8px;margin-bottom:12px;">
+          <div class="win-hd"><div class="card-title">到貨紀錄</div><div style="display:flex;gap:8px;">
             <input type="month" class="fi" style="width:auto;padding:5px 10px;font-size:13px;" id="arrivalMonthFilter" onchange="renderArrivalsTable()">
-          </div>
+          </div></div>
           <div class="tbl-wrap" id="arrivalsTable"></div>
         </div>
       </div>
@@ -1172,9 +1218,9 @@ a.btn{text-decoration:none;}
       </div>
       <div class="stats-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px;" id="revStats"></div>
       <div class="card">
-        <div style="display:flex;gap:8px;margin-bottom:12px;">
-          <input type="month" class="fi" style="width:auto;padding:5px 10px;font-size:13px;" id="revMonthFilter" onchange="renderRevTable()">
-        </div>
+        <div class="win-hd"><div class="card-title">營業紀錄</div><div style="display:flex;gap:8px;">
+          <input type="month" class="fi" style="width:auto;padding:5px 10px;font-size:13px;" id="revMonthFilter" onchange="renderRevPage()">
+        </div></div>
         <div class="tbl-wrap" id="revTable"></div>
       </div>
     </div>
@@ -1187,12 +1233,12 @@ a.btn{text-decoration:none;}
       </div>
       <div class="stats-grid" style="grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:16px;" id="vendorStats"></div>
       <div class="card">
-        <div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
-          <select class="fs" style="width:auto;padding:5px 10px;font-size:13px;" id="vpStatusFilter" onchange="renderVendorTable()">
+        <div class="win-hd"><div class="card-title">請款紀錄</div><div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <select class="fs" style="width:auto;padding:5px 10px;font-size:13px;" id="vpStatusFilter" onchange="renderVendorPage()">
             <option value="">全部狀態</option><option value="unpaid">未請款</option><option value="paid">已請款</option>
           </select>
-          <input type="month" class="fi" style="width:auto;padding:5px 10px;font-size:13px;" id="vpMonthFilter" onchange="renderVendorTable()">
-        </div>
+          <input type="month" class="fi" style="width:auto;padding:5px 10px;font-size:13px;" id="vpMonthFilter" onchange="renderVendorPage()">
+        </div></div>
         <div class="tbl-wrap" id="vendorTable"></div>
       </div>
     </div>
@@ -1372,11 +1418,11 @@ const PX={
   arrival:["................","............kk..","...........kwEk.","....kkkkkkkeEk..","...kyYYYmkeEkk..","..kyYkkmkeEkbk..",".kkkkweeeEkkbbk.",".koOOkeeEkOkbbk.",".koOOOkEkOOkbbk.",".koOOOOkOOOkbBk.",".koOOOOOOOOkbBk.",".koOOOOOOOOkBBk.",".koOOOOOOOOkBk..",".kbbbbbbbbbkk...",".kkkkkkkkkkk....","................"],
   bell:["................",".......kk.......",".....kkyYkk.....","....kywyyYYk....","...kywwyyyYOk...","...kywyyyyYOk...","...kywyyyyYOk...","...kywyyyyYOk...","...kyyyyyyYOk...","..kyyyyyyyyYOk..",".kyyyyyyyyyYYOk.",".kYYYYYYYYYOOOk.","..kkkkkYOkkkkk..",".......kk.......","................","................"],
   calendar:["................","...kgk....kgk...",".kkkgkkkkkkgkkk.",".kprkrrrrrrkrRk.",".kprrrrrrrrrrRk.",".kRRRRRRRRRRRRk.",".kwwwwwwwwwwwlk.",".kwggwwggwwgglk.",".kwggwwggwwgglk.",".kwwwwwwwwwwwlk.",".kwggwwrrwwgglk.",".kwggwwrrwwgglk.",".kwwwwwwwwwwwlk.",".kllllllllllllk.",".kkkkkkkkkkkkkk.","................"],
-  cart:["................",".kkkk...........",".kprRk..kkkkkk..",".kkkgGk.kbbybBk.","....kgGkkbbybBk.","...kkkkkkkkkkkk.","...kwwcwccwccCk.","...kccCcCCcCCCk.","....kcCcCCcCCk..","....kcCcCCcCCk..",".....kkkkkkkkk..","....kGgggggggGk.",".....kkk...kkk..","....kwgGk.kwgGk.",".....kkk...kkk..","................"],
+  cart:["................",".kkkk...........",".kprRk..kkkkkk..",".kkkgGk.kbbybBk.","....kgGkkbbybBk.","...kkkkkkkkkkkk.","...kwwcwccwccCk.","...kccCcCCcCCCk.","....kcCcCCcCCk..","....kcCcCCcCCk..",".....kkkkkkkkk..","....kGgggggggGk.",".....kkkkkkkkk..","....kwgGk.kwgGk.",".....kkk...kkk..","................"],
   cashbook:["................","............kk..","...........kwck.","..........kwcCk.","..........kwcCk.","...kkkk..kkwCk..","..kwwwwkkwkcCk..","..kwgggllgkkwk..","..kwwwwllwkwwk..","..kwgggllkggwk..","..kwwwwllkwwwk..","..kwgggllgggwk..",".kbkkkkllkkkkbk.",".kbbbbbkkbbbbBk.","..kkkkkkkkkkkk..","................"],
-  cloud:["................","................",".......kkkk.....","......kwwwwk....",".....kwwwwwwk...","..kk.kwnnnwnwk..",".kwwkwnwwwnnwwk.",".kwwwnwwwnnnwwk.",".kwwwnwwwwwwwck.",".kwwwnwwwwwnwck.",".kcwwwnwwwnwcck.","..kccwwnnnwcck..","...kkkkkkkkkk...","................","................","................"],
-  coin:["................",".....kkkkkk.....","...kkwwyyyyykk..","..kywyYYYYyyYk..","..kwYYyyyyYYyk..",".kwYyyyYYyyyYyk.",".kwYyyywYyyyYyk.",".kyYyYwwyYYyYOk.",".kyYyYYyYOYyYOk.",".kyYyyyYOyyyYOk.",".kyYyyyYOyyYYOk.","..kyYYyyyyYYOk..","..kYyyYYYYYOOk..","...kkYOOOOOkk...",".....kkkkkk.....","................"],
-  doctor:["................","....kkkkkkkk....","...kbbkkkkbBk...","...kbkwwlgkBk...","...kGkwkkgkGk...","...ksklkkGksk...","...kskggGGkSk...","...ksskkkksSk...","...kskssssksk...","...kspsSSspSk...","..kkksssssSkkk..",".kwwwkcsSckllgk.",".kwwwwkcCkwllgk.",".kwwwwwkkwwllgk.",".kkkkkkkkkkkkkk.","................"],
+  cloud:["................","................",".....kkkk.......","....kwwwwk......","..kkwwwwwwkk....",".kwwwwwwwwwwkk..",".kwwwwwkkwwwwck.",".kwwwwkcCkwwwck.",".kwwwkcCCnkwwck.",".kwwkcCCCCnkwck.",".kwwkkkCnkkkcck.",".kccwwkCnkwccck.","..kccckCnkccck..","...kkkkkkkkkk...","................","................"],
+  coin:["................",".....kkkkkk.....","...kkwwyyyykk...","..kwwyyyyyyyyk..","..kwyyYYYYyyyk..",".kwyyYyyyyYyyOk.",".kwyYyywyyyYyOk.",".kyyYywyyyyYyOk.",".kyyYyyyyyyYyOk.",".kyyYyyyyyyYyOk.",".kyyyYyyyyYyyOk.","..kyyyYYYYyyOk..","..kYyyyyyyyOOk..","...kkYOOOOOkk...",".....kkkkkk.....","................"],
+  doctor:["................",".....kkkkkk.....","....kbkwcCkk....","...kbbkcCnkBk...","...kgGkCnnkGk...","...kbsbkkkbBk...","...kbssssssBk...","...kBsksskSBk...","....kpssspSk....",".....kkSSkk.....","...kkwGcCGlkk...","..kwwwGkkGllgk..","..kwwwwGGlllgk..","..kwwwwwlllggk..","..kkkkkkkkkkkk..","................"],
   expenses:["................","...kk.kk.kk.....","..kSSkbbkbBk....","...kkSbbBkk.....","....krrrRk......","...kSbbbbBk.....","..kSSBbbBbBk....",".kSSBbbbbBbBk...",".kSbbbbbbbkkk...",".kSbbbbbbkwyyk..",".kSbbbbbkyyyYYk.",".kbbbbbbkyyYYOk.",".kbbbbbBkyYYOOk.","..kbbbBBBkYOOk..","...kkkkkkkkkk...","................"],
   heart:["................","................","..kkkk....kkkk..",".kpwwpk..kppppk.",".kpwpppkkppppPk.",".kpppppppppppPk.",".kpppppppppppPk.",".kppppppppppPPk.","..kppppppppPPk..","...kpppppppPk...","....kppppPPk....",".....kppPPk.....","......kPPk......",".......kk.......","................","................"],
   home:["................",".......kk.kkk...","......kprkkgk...",".....kprrRkgk...","....kprrrrRkk...","...kprrrrrrRk...","..kprrrrrrrrRk..",".kRRRRRRRRRRRRk.",".kkmmmmmmmmmSkk.","..kBBBBmmkkmSk..","..kBwcBmkbBkSk..","..kBcCBmkbBkSk..","..kBBBBmkbykSk..","..kSSSSSkbBkSk..","..kkkkkkkkkkkk..","................"],
@@ -1394,10 +1440,10 @@ const PX={
   search:["................","....kkkkk.......","...kllllgk......","..klwccccgk.....",".klwccccccgk....",".klwccccccGk....",".klcccccccGk....",".kgccccccCGk....",".kgcccccCCGk....","..kgcCCCCGkk....","...kGGGGGkYOk...","....kkkkkObbkk..",".........kkBbbk.","...........kBBk.","............kk..","................"],
   settings:["................","......kkkk......","..kk..kwlk..kk..","..kwkkwwllkklk..","...kwwllllllk...","...kwllkkllgk...",".kkwllk..klggkk.",".kwllk....kgggk.",".klllk....kggGk.",".kklllk..kggGkk.","...kllgkkggGk...","...klggggggGk...","..kgkkggGGkkGk..","..kk..kgGk..kk..","......kkkk......","................"],
   slime:["................","................",".......kk.......","......kppk......","....kkpppPkk....","...kpwwppppPk...","..kpwwwpppppPk..","..kpwwppppppPk..",".kppwpppppppPPk.",".kpppkppppkppPk.",".kpppkppppkppPk.",".kpppppkkpppPPk.",".kpppppppppPPPk.",".kPpppppppPPPPk.","..kkkkkkkkkkkk..","................"],
-  star:["................",".......kk.......","......kwyk......","......kwyk......",".....kwyyYk.....",".kkkkkwyyYkkkkk.",".kwwwyyyyyyyYYk.","..kwyyyyyyyyYk..","...kyyyyyyyYk...","....kyyyyyYk....","...kyyyyyyyYk...","...kyyykkyyYk...","..kyyYk..kyyYk..",".kyYk......kyYk.",".kkk........kkk.","................"],
-  trend:["................","........kkkkkk..",".......kwwwweEk.","........kweeeEk.","........keEeeEk.",".......keEkEeEk.","......keEkkkEEk.",".....keEkwYkkEk.","....keEkkwYk.k..","...keEkkkyYk....","..keEkwYkyYk....",".kEEkkwYkyYk....","..kkkkyYkyYk....","..kwYkyYkyYk....","...kk.kk.kk.....","................"],
+  star:["................",".......kk.......","......kwyk......","......kwyk......",".....kwyyYk.....",".kkkkkwyyYkkkkk.",".kwwwyyyyyyyYYk.","..kwyyyyyyyyYk..","...kyyyyyyyYk...","....kyyyyyYk....","...kyyyyyyyYk...","...kyyykkyyYk...","..kyyYk..kyyYk..",".kyYkk....kkyYk.",".kkk........kkk.","................"],
+  trend:["................","........kkkkkk..",".......kwwwweEk.","........kweeeEk.","........keEeeEk.",".......keEkEeEk.","......keEkkkEEk.",".....keEkwYkkEk.","....keEkkwYk.k..","...keEkkkyYk....","..keEkwYkyYk....","..kkkkwYkyYk....","..kwYkyYkyYk....","..kwYkyYkyYk....","...kk.kk.kk.....","................"],
   user:["................","......kkkk......","....kkbbbbkk....","...kbObbbbbBk...","...kObbbbbbBk...","...kbsbbsbbBk...","...kbssssssBk...","...kBsksskSBk...","....kpssspSk....",".....kkSSkk.....","...kkcwwwwCkk...","..kcwcwwwwCCCk..","..kcccwwwCCCCk..","..kcccccCCCCCk..","..kkkkkkkkkkkk..","................"],
-  vendor:["................","..........kkk...",".........kmSSk..","........kmwSbSk.",".......kmwmmSSk.","......kmwmmmSSk.",".....krwmmmSSk..","....kmrrmmkkk...","...kmwmrRkprrk..","..kmwmmmkprrrrk.",".kmwmmmSkrrRrRk.",".kwmmmSSkrrrRRk.",".kmmmSSk.krRRk..","..kSSSk...kkk...","...kkk..........","................"]
+  vendor:["................","..kkkkkkkkkkkk..",".kSkwwmmmmmmmSk.",".kbkmmmmmmmmSSk.","..kkkkkkkkkkkk..","...kmwmmmmmmSk..","...kmSSSSSkkkk..","...kmmmmmkpprk..","...kmSSSkpRRrRk.","...kmmmmkpRrrRk.","...kmSSSkrrrpRk.","..kkkkkkkkRRRk..",".kSkwmmmmmkkkSk.",".kbkmmmmmmmmSSk.","..kkkkkkkkkkkk..","................"]
 };
 const _pxCache={};
 function pxSvg(name,scale=1){
@@ -1432,6 +1478,7 @@ function roTableNowrap(root){
   root.querySelectorAll('td').forEach(td=>{
     const t=td.textContent.trim();
     td.classList.toggle('nw',t.length>0&&t.length<=12&&!td.querySelector('button,input,select,textarea,.btn'));
+    td.classList.toggle('td-empty',t==='-'||t==='—');
   });
   root.querySelectorAll('.tbl-wrap table').forEach(tb=>{
     const heads=[...tb.querySelectorAll('thead th')].map(th=>th.textContent.trim());
@@ -1441,9 +1488,11 @@ function roTableNowrap(root){
       cells.forEach((td,i)=>{
         const lab=heads[i]||'';
         if(td.dataset.label!==lab) td.dataset.label=lab;
-        td.classList.toggle('td-act',!!td.querySelector('button,.btn')&&td.textContent.trim().length<30);
+        td.classList.toggle('td-act',!!td.querySelector('button,.btn')&&td.textContent.replace(/\s+/g,'').length<30);
       });
     });
+    const last=tb.querySelector('tbody tr:not(.tr-full)>td:last-child');
+    tb.classList.toggle('has-act',!!last&&last.classList.contains('td-act'));
   });
 }
 function roDecorate(){
@@ -2772,7 +2821,7 @@ function renderStockTable(){
       <td>
         <button class="btn btn-outline btn-xs" onclick="openModal('newOrder',null,'${i.id}')">叫貨</button>
         <button class="btn btn-outline btn-xs" onclick="openEditItem('${i.id}')">編輯</button>
-        <button class="btn btn-outline btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製此品項到另一間診所" style="background:#F3EEFF;color:var(--purple-d);border-color:#D6CCEA;">📋 複製到另一間</button>
+        <button class="btn btn-purple btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製此品項到另一間診所">📋 複製</button>
         <button class="btn btn-red btn-xs" onclick="deleteItem('${i.id}')">刪</button>
       </td>
     </tr>`;
@@ -2841,7 +2890,7 @@ function editOrder(id){
     <div class="alert-banner info">✏️ 編輯模式 — 修改後儲存將覆蓋原訂單資料</div>
     <div class="form-row"><div class="fg"><label class="fl">診所</label><select class="fs" id="ord_clinic">${clinicOpts}</select></div><div class="fg"><label class="fl">叫貨日期</label><input class="fi" type="date" id="ord_date" value="${order.orderDate||today()}"></div></div>
     <div class="fg"><label class="fl">廠商</label><input class="fi" type="text" id="ord_vendor" value="${order.vendor||''}" placeholder="廠商名稱"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">訂購品項</div>
+    <div class="sec-divider">訂購品項</div>
     <div id="orderItemRows"></div>
     <button class="btn btn-outline btn-sm" style="margin-bottom:12px;" onclick="addOrderItemRow()">＋ 新增品項</button>
     <div class="form-row"><div class="fg"><label class="fl">優惠方案</label><input class="fi" type="text" id="ord_promo" value="${order.promotion||''}" placeholder="例：買5送1"></div><div class="fg"><label class="fl">贈品</label><input class="fi" type="text" id="ord_gift" value="${order.gift||''}" placeholder="例：贈品說明"></div></div>
@@ -2938,7 +2987,7 @@ function renderItemsMgmt(){
       <td>${i.minStock||0}</td>
       <td>${fN(i.avgUnitPrice)}</td>
       <td>${i.vendor||'-'}</td>
-      <td><button class="btn btn-outline btn-xs" onclick="openEditItem('${i.id}')">編輯</button><button class="btn btn-outline btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製到另一間診所" style="background:#F3EEFF;color:var(--purple-d);border-color:#D6CCEA;">📋 複製</button><button class="btn btn-red btn-xs" onclick="deleteItem('${i.id}')">刪</button></td>
+      <td><button class="btn btn-outline btn-xs" onclick="openEditItem('${i.id}')">編輯</button><button class="btn btn-purple btn-xs" onclick="copyItemToOtherClinic('${i.id}')" title="複製到另一間診所">📋 複製</button><button class="btn btn-red btn-xs" onclick="deleteItem('${i.id}')">刪</button></td>
     </tr>`;
   }).join('');
   document.getElementById('itemsMgmtTable').innerHTML=`<table>
@@ -2996,15 +3045,15 @@ function showRevDetail(id){
     <div style="display:flex;justify-content:space-between;padding:8px 0;font-weight:700;font-size:15px;border-top:2px solid var(--gray-border);margin-top:8px;"><span>總支出</span><span>${fN(calcExpTotal(r))}</span></div>
     ${(r.labFees||[]).length?`<div style="font-size:14px;color:var(--text3);">技工費：${(r.labFees||[]).map(l=>`${l.lab}(${l.doctor}) ${fN(l.amount)}`).join(' ／ ')}</div>`:''}
     ${r.note?`<div style="font-size:14px;color:var(--text3);margin-top:8px;">備註：${r.note}</div>`:''}
-  `,[]);
+  `,['<button class="btn btn-outline" onclick="closeModal()">關閉</button>']);
 }
 
 // ===================== VENDOR PAGE =====================
 function renderVendorPage(){
-  const sf=document.getElementById('vpStatusFilter')?.value||'';
-  const mf=document.getElementById('vpMonthFilter')?.value||'';
   if(document.getElementById('vpMonthFilter')&&!document.getElementById('vpMonthFilter').value)
     document.getElementById('vpMonthFilter').value=thisMonth();
+  const sf=document.getElementById('vpStatusFilter')?.value||'';
+  const mf=document.getElementById('vpMonthFilter')?.value||'';
   let items=filterClinic(DB.vendorPayments,S.clinic);
   const unpaidT=items.filter(p=>p.status==='unpaid').reduce((s,p)=>s+(+p.amount||0),0);
   const paidT=items.filter(p=>p.status==='paid').reduce((s,p)=>s+(+p.amount||0),0);
@@ -3039,10 +3088,10 @@ function renderVendorPage(){
 }
 
 function renderVendorPage(){
-  const sf=document.getElementById('vpStatusFilter')?.value||'';
-  const mf=document.getElementById('vpMonthFilter')?.value||'';
   if(document.getElementById('vpMonthFilter')&&!document.getElementById('vpMonthFilter').value)
     document.getElementById('vpMonthFilter').value=thisMonth();
+  const sf=document.getElementById('vpStatusFilter')?.value||'';
+  const mf=document.getElementById('vpMonthFilter')?.value||'';
   let items=filterClinic(DB.vendorPayments,S.clinic);
   const unpaidT=items.filter(p=>p.status==='unpaid').reduce((s,p)=>s+(+p.amount||0),0);
   const paidT=items.filter(p=>p.status==='paid').reduce((s,p)=>s+(+p.amount||0),0);
@@ -3107,11 +3156,11 @@ function showVendorDetail(id){
         <span style="font-size:14px;color:var(--text2);">付款方式</span>
         <span style="font-size:14px;font-weight:600;">${payLabel[p.paymentMethod]||'-'}</span>
       </div>
-      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+      <div style="display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:6px 8px;">
         <span style="font-size:14px;color:var(--text2);flex-shrink:0;">🏦 廠商匯款帳號</span>
         <div style="text-align:right;">
           ${p.accountInfo
-            ? `<div style="font-size:14px;font-weight:600;font-family:monospace;background:#EBF2FD;padding:6px 10px;border-radius:4px;letter-spacing:.5px;">${p.accountInfo}</div>
+            ? `<div style="font-size:15px;font-weight:700;font-family:monospace;background:#EBF2FD;padding:6px 10px;border-radius:4px;letter-spacing:.5px;white-space:nowrap;overflow-wrap:normal;">${p.accountInfo}</div>
                <button onclick="navigator.clipboard.writeText('${p.accountInfo}').then(()=>notify('✅ 已複製帳號'))" class="btn btn-outline btn-xs" style="margin-top:5px;">📋 複製帳號</button>`
             : '<span style="font-size:14px;color:var(--text3);">尚未填寫</span>'}
         </div>
@@ -3764,14 +3813,14 @@ function buildRevModal(){
   const clinicOpts=`<option value="kj">康潔牙醫診所</option><option value="kjm">康潔美牙醫診所</option>`;
   setModal('新增每日營業紀錄',`
     <div class="form-row"><div class="fg"><label class="fl">日期</label><input class="fi" type="date" id="rv_date" value="${today()}"></div><div class="fg"><label class="fl">診所</label><select class="fs" id="rv_clinic">${clinicOpts}</select></div></div>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">各醫師收入</div>
+    <div class="sec-divider">各醫師收入</div>
     <div id="drRows"></div><button class="btn btn-outline btn-sm" onclick="addDrRow()" style="margin-bottom:12px;">＋ 新增醫師</button>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">自費細分</div>
+    <div class="sec-divider">自費細分</div>
     <div class="form-row-3"><div class="fg"><label class="fl">植牙</label><input class="fi" type="number" id="rv_implant" placeholder="0"></div><div class="fg"><label class="fl">隱適美矯正</label><input class="fi" type="number" id="rv_invisalign" placeholder="0"></div><div class="fg"><label class="fl">傳統矯正</label><input class="fi" type="number" id="rv_traditional" placeholder="0"></div></div>
     <div class="fg"><label class="fl">掛號收入</label><input class="fi" type="number" id="rv_reg" placeholder="0"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">刷卡紀錄</div>
+    <div class="sec-divider">刷卡紀錄</div>
     <div id="cardRows"></div><button class="btn btn-outline btn-sm" onclick="addCardRow2()" style="margin-bottom:12px;">＋ 新增刷卡</button>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">技工費</div>
+    <div class="sec-divider">技工費</div>
     <div id="labRows2"></div><button class="btn btn-outline btn-sm" onclick="addLabRow2()" style="margin-bottom:12px;">＋ 新增技工費</button>
     <div class="fg"><label class="fl">備註</label><textarea class="fta" id="rv_note" rows="2"></textarea></div>
   `,`<button class="btn btn-outline" onclick="closeModal()">取消</button><button class="btn btn-blue" onclick="saveRevenue()">💾 儲存</button>`);
@@ -3838,7 +3887,7 @@ function buildOrderModal(preItemId=null){
   setModal('新增進貨訂購',`
     <div class="form-row"><div class="fg"><label class="fl">診所</label><select class="fs" id="ord_clinic">${clinicOpts}</select></div><div class="fg"><label class="fl">叫貨日期</label><input class="fi" type="date" id="ord_date" value="${today()}"></div></div>
     <div class="fg"><label class="fl">廠商</label><input class="fi" type="text" id="ord_vendor" placeholder="廠商名稱"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">訂購品項</div>
+    <div class="sec-divider">訂購品項</div>
     <div id="orderItemRows"></div>
     <button class="btn btn-outline btn-sm" style="margin-bottom:12px;" onclick="addOrderItemRow()">＋ 新增品項</button>
     <div class="form-row"><div class="fg"><label class="fl">優惠方案</label><input class="fi" type="text" id="ord_promo" placeholder="例：買5送1"></div><div class="fg"><label class="fl">贈品</label><input class="fi" type="text" id="ord_gift" placeholder="例：贈品說明"></div></div>
@@ -3934,7 +3983,7 @@ function buildArrivalModal(orderId=null){
       <div class="fg"><label class="fl">到貨日期</label><input class="fi" type="date" id="arr_date" value="${today()}"></div>
     </div>
     <div class="fg"><label class="fl">診所</label><select class="fs" id="arr_clinic">${clinicOpts}</select></div>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">到貨品項確認</div>
+    <div class="sec-divider">到貨品項確認</div>
     <div id="arrItemRows"></div>
     <div class="fg" style="margin-top:14px;">
       <label class="fl">📄 貨單 PDF（選填）</label>
@@ -4064,7 +4113,7 @@ function editArrival(id){
       <div class="fg"><label class="fl">診所</label><select class="fs" id="arr_clinic">${clinicOpts}</select></div>
     </div>
     <div class="fg"><label class="fl">廠商</label><input class="fi" type="text" id="arr_vendor_edit" value="${rec.vendor||''}" placeholder="廠商名稱"></div>
-    <div style="font-size:13px;font-weight:600;color:var(--text3);margin-bottom:8px;letter-spacing:.5px;">到貨品項（可修改數量、有效期限、批號）</div>
+    <div class="sec-divider">到貨品項（可修改數量、有效期限、批號）</div>
     <div id="arrItemRows"></div>
     <div class="fg" style="margin-top:14px;">
       <label class="fl">📄 貨單 PDF</label>
