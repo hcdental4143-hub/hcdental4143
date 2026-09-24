@@ -320,7 +320,7 @@ td.nw{white-space:nowrap;}
   box-shadow:inset 0 1px 2px rgba(29,39,73,.12);transition:border-color .12s,box-shadow .12s;
 }
 .fi:focus,.fs:focus,.fta:focus{border-color:var(--blue);box-shadow:inset 0 1px 2px rgba(29,39,73,.12),0 0 0 2px rgba(52,98,196,.28);}
-.fi::placeholder,.fta::placeholder,input::placeholder,textarea::placeholder{color:#7e89a3;}
+.fi::placeholder,.fta::placeholder,input::placeholder,textarea::placeholder{color:#646e8c;}
 .fta{resize:vertical;min-height:72px;}
 input[type=checkbox],input[type=radio]{accent-color:var(--blue);width:16px;height:16px;vertical-align:middle;}
 
@@ -497,6 +497,21 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
   #stockTable td:nth-child(2) .badge{white-space:normal;}
 }
 
+/* 設定頁與空狀態（QA 第三批） */
+.stat-sub:empty{display:none;}
+.empty-icon{opacity:1;font-size:0;display:flex;justify-content:center;margin-bottom:10px;}
+.empty-icon .px-box{width:60px;height:60px;}
+.cloud-card #cloudSyncStatus{font-size:13px;}
+#doctorSettingsList>div,#labSettingsList>div,#userAccountList>div{background:#fff!important;border:1px solid #c9d4e6;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(29,39,73,.08);}
+#currentUserInfo>div{border:1px solid #a8bee8;}
+#doctorSettingsList span[style*="flex:1"],#labSettingsList span[style*="flex:1"]{font-weight:700!important;color:var(--ro-ink);}
+#doctorSettingsList span[style*="flex:1"],#labSettingsList span[style*="flex:1"],#userAccountList [style*="flex:1"]{overflow-wrap:anywhere;}
+#dataStats>div>div{background:#fff!important;border:1px solid #afbfdb;box-shadow:inset 0 1px 0 #fff,0 1px 2px rgba(29,39,73,.1);}
+.sys-toggle{display:flex;align-items:center;gap:10px;min-height:40px;padding:6px 10px;margin-bottom:6px;background:#fff;border:1px solid #c9d4e6;border-radius:4px;font-size:14px;font-weight:800;color:var(--ro-ink2);cursor:pointer;}
+.sys-toggle input{width:20px;height:20px;flex-shrink:0;}
+.sys-toggle:hover{background:#eef4fe;}
+.page-tab{word-break:keep-all;}
+
 /* 鍵盤操作時的焦點框 */
 .btn:focus-visible,.ctab:focus-visible,.chart-tab:focus-visible,.page-tab:focus-visible,.notif-btn:focus-visible,.mobile-menu-btn:focus-visible,.section-hd-link:focus-visible,.modal-close:focus-visible{outline:2px solid #ffb400;outline-offset:1px;}
 
@@ -590,6 +605,13 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
   #orderItemRows>div{position:relative;padding-top:40px!important;}
   #orderItemRows .form-row>.btn{position:absolute;top:6px;right:6px;margin:0!important;min-height:32px;}
   #orderItemRows .form-row-4>.fg:first-child{grid-column:1/-1;}
+  /* QA 第三批：設定頁、人事/支出/技工卡片 */
+  #page-settings .btn-xs{min-height:36px;padding:4px 12px;font-size:14px;}
+  #tab-stBackup .cloud-card .btn-sm{flex:1 1 auto;}
+  #hrTable tbody tr,#expTable tbody tr,#labTable tbody tr{position:relative;}
+  #hrTable tbody td:first-child,#expTable tbody td:first-child,#labTable tbody td:first-child{padding-right:64px!important;}
+  #hrTable td.td-act:last-child,#expTable td.td-act:last-child,#labTable td.td-act:last-child{position:absolute;top:4px;right:10px;width:auto;padding:0!important;border:none;min-height:0;}
+  #hrTable td.td-act:last-child::before,#expTable td.td-act:last-child::before,#labTable td.td-act:last-child::before{display:none;}
   /* 資料表 → 卡片（每列一張，左邊欄位名稱、右邊數值） */
   .tbl-wrap{overflow:visible;background:transparent;border:none;box-shadow:none;border-radius:0;}
   .tbl-wrap table{min-width:0;}
@@ -1270,7 +1292,7 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
     <!-- ========== REPORTS ========== -->
     <div class="page" id="page-reports">
       <div class="page-hd"><div class="page-hd-title">報表統計</div></div>
-      <div class="card"><div id="reportsContent"><div class="empty"><div class="empty-icon">📊</div><div>報表功能開發中，請先使用總覽頁面</div></div></div></div>
+      <div class="card"><div id="reportsContent"><div class="empty"><div class="empty-icon"><span class="px-box"><span class="px" data-px="reports" data-px-scale="3"></span></span></div><div>報表功能開發中，請先使用總覽頁面</div></div></div></div>
     </div>
 
     <!-- ========== SETTINGS ========== -->
@@ -1318,10 +1340,10 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
         </div>
 
         <!-- Cloud Sync Card -->
-        <div class="card" style="margin-bottom:12px;background:linear-gradient(135deg,#F3EEFF 0%,#fff 100%);border:1.5px solid var(--purple);">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;flex-wrap:wrap;gap:8px;">
+        <div class="card cloud-card" style="margin-bottom:12px;">
+          <div class="win-hd">
             <div>
-              <div class="card-title" style="display:flex;align-items:center;gap:6px;">☁️ 雲端同步（跨裝置）</div>
+              <div class="card-title">☁️ 雲端同步（跨裝置）</div>
               <div class="card-subtitle">設定一次後，手機/電腦/平板開啟連結即可自動同步</div>
             </div>
             <div id="cloudSyncStatus" style="font-size:13px;color:var(--text3);"></div>
@@ -1334,16 +1356,14 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
-          <div class="card" style="text-align:center;padding:28px 20px;">
-            <div style="font-size:40px;margin-bottom:10px;">⬇️</div>
-            <div class="card-title" style="margin-bottom:6px;">匯出備份</div>
-            <div class="card-subtitle" style="margin-bottom:14px;">下載 JSON 備份檔（含所有資料）</div>
+          <div class="card">
+            <div class="card-title">⬇️ 匯出備份</div>
+            <div class="card-subtitle" style="margin-bottom:12px;">下載 JSON 備份檔（含所有資料）</div>
             <button class="btn btn-blue btn-full" onclick="exportData()">📦 立即匯出備份</button>
           </div>
-          <div class="card" style="text-align:center;padding:28px 20px;">
-            <div style="font-size:40px;margin-bottom:10px;">⬆️</div>
-            <div class="card-title" style="margin-bottom:6px;">匯入還原</div>
-            <div class="card-subtitle" style="margin-bottom:14px;">從備份 JSON 檔還原所有資料</div>
+          <div class="card">
+            <div class="card-title">⬆️ 匯入還原</div>
+            <div class="card-subtitle" style="margin-bottom:12px;">從備份 JSON 檔還原所有資料</div>
             <button class="btn btn-outline btn-full" style="margin-bottom:6px;" onclick="document.getElementById('importFileInput').click()">📂 選擇備份檔案</button>
             <button class="btn btn-outline btn-full" onclick="importDataFromText()">📋 貼上備份內容</button>
             <input type="file" id="importFileInput" accept=".json,application/json" style="display:none;" onchange="importData(this)">
@@ -1381,18 +1401,9 @@ input[type=file]::file-selector-button:hover{background:var(--ro-btn-hover);}
         </div>
         <div class="card">
           <div class="card-title" style="margin-bottom:14px;">🔔 通知設定</div>
-          <div class="fg" style="display:flex;align-items:center;justify-content:space-between;">
-            <label class="fl" style="margin:0;">庫存低於安全庫存時通知</label>
-            <input type="checkbox" id="sys_notif_stock" checked onchange="saveSysSettings()" style="width:18px;height:18px;cursor:pointer;">
-          </div>
-          <div class="fg" style="display:flex;align-items:center;justify-content:space-between;">
-            <label class="fl" style="margin:0;">今日未輸入營業額通知</label>
-            <input type="checkbox" id="sys_notif_rev" checked onchange="saveSysSettings()" style="width:18px;height:18px;cursor:pointer;">
-          </div>
-          <div class="fg" style="display:flex;align-items:center;justify-content:space-between;">
-            <label class="fl" style="margin:0;">未請款廠商通知</label>
-            <input type="checkbox" id="sys_notif_vendor" checked onchange="saveSysSettings()" style="width:18px;height:18px;cursor:pointer;">
-          </div>
+          <label class="sys-toggle"><input type="checkbox" id="sys_notif_stock" checked onchange="saveSysSettings()"><span>庫存低於安全庫存時通知</span></label>
+          <label class="sys-toggle"><input type="checkbox" id="sys_notif_rev" checked onchange="saveSysSettings()"><span>今日未輸入營業額通知</span></label>
+          <label class="sys-toggle"><input type="checkbox" id="sys_notif_vendor" checked onchange="saveSysSettings()"><span>未請款廠商通知</span></label>
         </div>
       </div>
     </div>
@@ -1477,7 +1488,8 @@ const PAGE_PX={dashboard:'home',cashbook:'cashbook',revenue:'revenue',inventory:
 function roTableNowrap(root){
   root.querySelectorAll('td').forEach(td=>{
     const t=td.textContent.trim();
-    td.classList.toggle('nw',t.length>0&&t.length<=12&&!td.querySelector('button,input,select,textarea,.btn'));
+    const money=/^-?NT\$\s?-?[\d,]+(\.\d+)?(\/時)?$/.test(t);
+    td.classList.toggle('nw',t.length>0&&(t.length<=12||money)&&!td.querySelector('button,input,select,textarea,.btn'));
     td.classList.toggle('td-empty',t==='-'||t==='—');
   });
   root.querySelectorAll('.tbl-wrap table').forEach(tb=>{
@@ -3211,7 +3223,7 @@ function renderHrPage(){
     ${statCard('','','px:user','正職人數',emps.filter(e=>e.type!=='parttime').length+' 人','','','')}
     ${statCard('','','px:calendar','兼職人數',emps.filter(e=>e.type==='parttime').length+' 人','','','')}
   `;
-  if(!emps.length){document.getElementById('hrTable').innerHTML='<div class="empty"><div class="empty-icon">👥</div><div>尚無員工資料</div></div>';return;}
+  if(!emps.length){document.getElementById('hrTable').innerHTML=`<div class="empty"><div class="empty-icon"><span class="px-box">${pxSvg('hr',3)}</span></div><div>尚無員工資料</div></div>`;return;}
   const rows=emps.map(e=>{
     const yrs=Math.max(0,Math.floor((Date.now()-new Date(e.joinDate||'2020-01-01').getTime())/1000/60/60/24/365));
     const leave=Math.min(yrs*3+7,30);
@@ -3236,7 +3248,7 @@ async function deleteEmp(id){const __ok=await customConfirm('確定刪除？',tr
 // ===================== EXPENSES & LABFEES =====================
 function renderExpensesPage(){
   const exps=filterClinic(DB.expenses,S.clinic).slice().reverse();
-  if(!exps.length){document.getElementById('expTable').innerHTML='<div class="empty"><div class="empty-icon">💳</div><div>尚無支出記錄</div></div>';return;}
+  if(!exps.length){document.getElementById('expTable').innerHTML=`<div class="empty"><div class="empty-icon"><span class="px-box">${pxSvg('expenses',3)}</span></div><div>尚無支出記錄</div></div>`;return;}
   const rows=exps.map(e=>`<tr>
     <td>${fD(e.date)}</td>
     <td><span class="badge badge-${e.clinic==='kj'?'blue':'purple'}">${CLINIC_NAMES[e.clinic]||e.clinic}</span></td>
@@ -3254,7 +3266,7 @@ async function deleteExp(id){const __ok=await customConfirm('確定？',true);if
 
 function renderLabFeesPage(){
   const labs=filterClinic(DB.labFees,S.clinic).slice().reverse();
-  if(!labs.length){document.getElementById('labTable').innerHTML='<div class="empty"><div class="empty-icon">🔧</div><div>尚無技工費記錄</div></div>';return;}
+  if(!labs.length){document.getElementById('labTable').innerHTML=`<div class="empty"><div class="empty-icon"><span class="px-box">${pxSvg('labfees',3)}</span></div><div>尚無技工費記錄</div></div>`;return;}
   const rows=labs.map(l=>`<tr>
     <td>${fD(l.date)}</td>
     <td><span class="badge badge-${l.clinic==='kj'?'blue':'purple'}">${CLINIC_NAMES[l.clinic]||l.clinic}</span></td>
@@ -3298,10 +3310,11 @@ function customPrompt(title, defaultValue=''){
 
 function customConfirm(message,danger=false,okLabel){
   return new Promise(resolve=>{
-    setModal('確認操作',`<div style="font-size:14px;color:var(--text);line-height:1.6;white-space:pre-wrap;">${message}</div>`,`
+    setModal('確認操作',`<div style="font-size:15px;font-weight:700;color:var(--text);line-height:1.6;white-space:pre-wrap;">${message}</div>`,`
       <button class="btn btn-outline" onclick="window._ccResolve(false);closeModal();">取消</button>
       <button class="btn ${danger?'btn-red':'btn-blue'}" onclick="window._ccResolve(true);closeModal();">${okLabel||(danger?'確定刪除':'確定')}</button>
     `);
+    document.querySelector('#modalBg .modal')?.classList.add('modal-sm');
     document.getElementById('modalBg').classList.add('open');
     window._ccResolve=resolve;
   });
@@ -3374,8 +3387,8 @@ function renderLabSettings(){
     <div style="display:flex;align-items:center;gap:10px;padding:10px;background:#F8FAFC;border-radius:4px;margin-bottom:6px;">
       <div class="ni-icon" style="background:#F3EEFF;">🔧</div>
       <span style="flex:1;font-size:14px;font-weight:500;">${l}</span>
-      <button class="btn btn-outline btn-xs" onclick="editLab(${i})">✏️</button>
-      <button class="btn btn-red btn-xs" onclick="deleteLab2(${i})">刪</button>
+      <button class="btn btn-outline btn-xs" onclick="editLab(${i})">✏️ 改名</button>
+      <button class="btn btn-red btn-xs" onclick="deleteLab2(${i})">刪除</button>
     </div>`).join(''):
     '<div class="empty" style="padding:20px;"><div>尚無技工所</div></div>';
 }
@@ -3627,7 +3640,7 @@ function importDataFromText(){
     <div class="alert-banner info" style="margin-bottom:12px;">
       💡 將備份的 JSON 內容直接貼到下方文字框，按確認還原
     </div>
-    <textarea id="importTextArea" placeholder="在此貼上備份 JSON 內容…" style="width:100%;height:240px;font-family:monospace;font-size:13px;padding:10px;border:1px solid var(--gray-border);border-radius:4px;resize:vertical;"></textarea>
+    <textarea id="importTextArea" class="fta" placeholder="在此貼上備份 JSON 內容…" style="height:240px;font-family:Consolas,Menlo,monospace;font-size:13px;"></textarea>
   `,`
     <button class="btn btn-outline" onclick="closeModal()">取消</button>
     <button class="btn btn-blue" onclick="doImportFromText()">📥 確認還原</button>
@@ -3666,7 +3679,7 @@ function renderBackupStats(){
     if(cfg.binId&&cfg.apiKey){
       cloudEl.innerHTML=`<span style="color:#1a6a3c;font-weight:600;">✓ 已啟用</span> Bin: <code style="background:#F8FAFC;padding:1px 6px;border-radius:3px;">${cfg.binId.slice(0,8)}…</code>`;
     } else {
-      cloudEl.innerHTML='<span style="color:#C49A2A;">⚠ 尚未設定</span>';
+      cloudEl.innerHTML='<span class="badge badge-orange" style="font-size:13px;">⚠ 尚未設定</span>';
     }
   }
   const stats=[
@@ -4822,8 +4835,8 @@ function showSyncSetup(){
     </div>
   `,`
     <button class="btn btn-outline" onclick="closeLoginModal()">取消</button>
-    <button class="btn btn-blue" onclick="saveSyncSetup()">💾 儲存設定</button>
     ${cfg.binId?`<button class="btn btn-outline" onclick="testCloudConnection()">🔌 測試連線</button>`:''}
+    <button class="btn btn-blue" onclick="saveSyncSetup()">💾 儲存設定</button>
   `);
   document.getElementById('modalBg').classList.add('open');
 }
