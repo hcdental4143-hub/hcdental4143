@@ -3821,13 +3821,14 @@ function openEditItem(id){
 }
 
 function openModalContent(title, body, footer){
+  document.querySelector('#modalBg .modal')?.classList.remove('modal-sm');
   document.getElementById('modalTitle').textContent=title;
   document.getElementById('modalBody').innerHTML=body;
   document.getElementById('modalFt').innerHTML=footer.map(b=>b).join('');
   document.getElementById('modalBg').classList.add('open');
 }
 
-function closeModal(){document.getElementById('modalBg').classList.remove('open'); S.editId=null;}
+function closeModal(){document.getElementById('modalBg').classList.remove('open'); document.querySelector('#modalBg .modal')?.classList.remove('modal-sm'); S.editId=null;}
 function closeBgModal(e){if(e.target===document.getElementById('modalBg'))closeModal();}
 
 function setModal(title,body,footer){
