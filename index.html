@@ -1535,7 +1535,8 @@ function roDecorate(){
     let queued=false;
     new MutationObserver(()=>{
       if(queued) return; queued=true;
-      requestAnimationFrame(()=>{queued=false;roTableNowrap(content);});
+      // 只整理目前顯示的頁面，隱藏頁面等切換時（會重新渲染）再處理
+      requestAnimationFrame(()=>{queued=false;roTableNowrap(content.querySelector('.page.active')||content);});
     }).observe(content,{childList:true,subtree:true});
     roTableNowrap(content);
   }
